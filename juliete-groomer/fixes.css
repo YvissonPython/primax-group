@@ -1,2 +1,11 @@
 [hidden]{display:none!important}
 dialog,.modal-shell{overflow-x:hidden}
+.hero-media>img{object-position:center 42%}
+.gallery .wide img{object-position:center 48%}
+.gallery figure:nth-child(2) img{object-position:center 44%}
+.gallery figure:nth-child(3) img{object-position:center 42%}
+.about-card>img{object-position:center 20%}
+@media(max-width:800px){
+  .hero-media>img{object-position:center 38%}
+  .about-card>img{object-position:center 18%}
+}
