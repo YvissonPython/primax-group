@@ -1,16 +1,1 @@
-window.JULIETE_CONFIG = {
-  productName: "Documento Profissional Juliete Groomer",
-  subtitle: "Um material prático, visual e fácil de aplicar na rotina de grooming.",
-  audience: "Profissionais e estudantes de banho e tosa que desejam mais organização, segurança e acabamento.",
-  contentSummary: "Conteúdo a definir",
-  benefits: ["Atendimento mais organizado", "Mais segurança na rotina", "Referências práticas reunidas", "Atenção aos detalhes do acabamento"],
-  originalPrice: "Definir",
-  promotionalPrice: "Definir",
-  checkoutUrl: "#oferta",
-  guarantee: "A confirmar",
-  whatsapp: "",
-  instagram: "",
-  supportEmail: "",
-  accessDetails: "Acesso digital — condições a confirmar",
-  chapters: ["Fundamentos", "Preparação", "Atendimento", "Técnicas", "Acabamento", "Organização", "Cuidados", "Experiência do cliente", "Bônus"]
-};
+window.JULIETE_CONFIG={supabaseUrl:"https://gcxaarboqzmrjdumwfhu.supabase.co",supabaseKey:"sb_publishable_jr7oYDH0TxyxYXKh21U3zg_4T7VCwOB",siteKey:"3635da56-ad27-423d-8687-c3b2eefb871f",whatsapp:"",fallbackServices:["Banho","Tosa higiênica","Tosa completa","Banho e tosa","Hidratação","Corte de unhas","Limpeza de ouvidos","Acabamentos e acessórios"]};
