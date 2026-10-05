@@ -26,7 +26,7 @@ body{overflow-x:hidden}
 .video-controls button:hover{background:rgba(143,76,94,.88);transform:translateY(-1px)}
 .video-controls span{font-size:16px}.video-progress{position:absolute;z-index:5;left:20px;right:20px;bottom:9px;height:3px;border-radius:99px;background:rgba(255,255,255,.28);overflow:hidden}.video-progress i{display:block;width:0;height:100%;background:#fff;border-radius:inherit;transition:width .1s linear}
 .data-play{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);font-size:14px}
-.video-hero .float-card{left:0;bottom:-14px}
+.video-hero .float-card{left:0;bottom:-76px}
 .video-hero .blob{inset:7% -8% -4% 5%;background:radial-gradient(circle at 70% 20%,#f7e1dd 0,transparent 38%),linear-gradient(145deg,#f1d7d9,#c98798)}
 .brand img{object-fit:contain}
 .service-card{cursor:pointer;outline:none;min-height:245px;display:flex;flex-direction:column}

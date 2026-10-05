@@ -40,6 +40,5 @@ playButton.onclick=()=>heroVideo.paused?playHero():(heroVideo.pause(),updateVide
 soundButton.onclick=()=>{heroVideo.muted=!heroVideo.muted;sessionStorage.setItem("julieteVideoSound",heroVideo.muted?"off":"on");if(heroVideo.paused)playHero();updateVideoControls()};
 heroVideo.addEventListener("timeupdate",()=>{progressFill.style.width=`${heroVideo.duration?(heroVideo.currentTime/heroVideo.duration)*100:0}%`});heroVideo.addEventListener("play",updateVideoControls);heroVideo.addEventListener("pause",updateVideoControls);
 const videoObserver=new IntersectionObserver(([entry])=>{if(entry.isIntersecting&&!reducedMotion&&!saveData)playHero();else if(!entry.isIntersecting)heroVideo.pause()},{threshold:.12});videoObserver.observe(heroVideo);
-if(sessionStorage.getItem("julieteVideoSound")==="on")heroVideo.muted=false;
 if(saveData){heroVideo.removeAttribute("autoplay");dataPlay.hidden=false;playButton.hidden=true;soundButton.hidden=true;dataPlay.onclick=()=>{dataPlay.hidden=true;playButton.hidden=false;soundButton.hidden=false;playHero()}}
 if(reducedMotion){heroVideo.pause();updateVideoControls()}else if(!saveData)playHero();
