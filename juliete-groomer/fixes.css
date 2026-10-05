@@ -12,7 +12,7 @@ dialog,.modal-shell{overflow-x:hidden}
 
 /* UX pass: sizing, interaction and accessibility */
 body{overflow-x:hidden}
-.hero{grid-template-columns:minmax(0,1fr) minmax(420px,1fr);min-height:660px;padding-top:36px;padding-bottom:44px;gap:clamp(40px,6vw,88px)}
+.hero{grid-template-columns:minmax(0,1fr) minmax(420px,1fr);min-height:660px;padding-top:36px;padding-bottom:72px;gap:clamp(40px,6vw,88px);overflow:visible}
 .hero h1{font-size:clamp(48px,5vw,76px)}
 .hero-media{height:clamp(520px,42vw,600px)}
 .hero-media>img{aspect-ratio:9/16;background:#ead0d5}
