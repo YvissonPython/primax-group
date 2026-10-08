@@ -25,13 +25,36 @@ section{padding:100px 0}.light{background:var(--light);color:var(--ink)}.section
 footer{padding:35px 0;color:#8fa6be;font-size:.82rem}
 @media(max-width:850px){.navlinks a:not(.btn){display:none}.hero-grid,.ai{grid-template-columns:1fr}.hero{text-align:left}.phone{margin-top:25px}.services{grid-template-columns:1fr 1fr}.models{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.quality{grid-template-columns:1fr}}
 @media(max-width:520px){.services{grid-template-columns:1fr}section{padding:75px 0}.screen{min-height:540px}h1{font-size:3.5rem}}
+
+/* Primax premium hero: visual depth, accessibility and performance */
+.hero{position:relative;isolation:isolate;background:radial-gradient(ellipse at 78% 42%,#1b4f7b 0%,#0b2743 31%,#071322 72%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.35;background:linear-gradient(120deg,transparent 20%,#3b95e512 52%,transparent 77%),repeating-linear-gradient(90deg,transparent 0 109px,#ffffff08 110px)}
+.hero::after{content:"";position:absolute;right:-18%;top:7%;width:65vw;height:65vw;border-radius:50%;background:radial-gradient(circle,#3c9aff24,transparent 65%);filter:blur(28px);z-index:-1;pointer-events:none}
+.hero-grid{grid-template-columns:minmax(0,1.13fr) minmax(320px,.87fr);gap:clamp(35px,5vw,90px)}
+.hero h1{font-size:clamp(3.4rem,5.9vw,6.1rem);line-height:1.035;letter-spacing:-.065em;max-width:750px;text-wrap:balance}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:11px;letter-spacing:.22em}
+.hero .eyebrow::before{content:"";width:22px;height:2px;background:#7bc0ff;box-shadow:0 0 18px #7bc0ff}
+.hero .lead{max-width:550px;font-size:1.08rem}
+.hero .btn{border-radius:8px;min-height:53px;transition:transform .25s,box-shadow .25s,background .25s}
+.hero .btn:hover{transform:translateY(-3px);box-shadow:0 12px 32px #1685ff40}
+.phone{position:relative;width:min(365px,90%);transform:perspective(1200px) rotateY(-8deg) rotateZ(3deg);border:1px solid #8bbef56b;box-shadow:0 55px 100px #0009,0 0 80px #278bff18;transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s}
+.phone::before{content:"";position:absolute;inset:-17px;border:1px solid #ffffff16;border-radius:49px;pointer-events:none}
+.phone:hover{transform:perspective(1200px) rotateY(0) rotateZ(0) translateY(-9px);box-shadow:0 65px 110px #0009,0 0 100px #278bff35}
+.screen{min-height:0;padding:23px 19px 20px}.screen h3{margin-top:28px}.appitem{transition:transform .2s,box-shadow .2s}.appitem:hover{transform:translateY(-3px);box-shadow:0 8px 18px #102b421a}
+.appcta{display:block;text-decoration:none;transition:filter .2s,transform .2s}.appcta:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.hero-grid>div:first-child{animation:primaxRise .85s both}.hero-grid>.phone{animation:primaxPhone 1s .15s both}
+@keyframes primaxRise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes primaxPhone{from{opacity:0;translate:0 28px}to{opacity:1;translate:0 0}}
+@media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:55px}.hero{padding-top:125px}.hero h1{max-width:720px}.phone{width:min(360px,85vw)}}
+@media(max-width:520px){.hero h1{font-size:clamp(3rem,12vw,4.4rem)}.hero .eyebrow{font-size:.61rem;letter-spacing:.14em}.hero .lead{font-size:1rem}.phone{transform:rotate(1deg)}.hero{padding-bottom:70px}}
+@media(prefers-reduced-motion:reduce){.hero-grid>div:first-child,.hero-grid>.phone{animation:none}.phone,.hero .btn,.appitem,.appcta{transition:none}}
 </style>
 </head>
 <body>
 <header><nav class="wrap"><a class="brand" href="/">PRIMAX GROUP<small>FACILITIES</small></a><div class="navlinks"><a href="#solucoes">Soluções</a><a href="#como">Como funciona</a><a href="#tecnologia">Tecnologia</a><a class="btn" href="#solicitar">Solicitar serviço</a></div></nav></header>
 <main>
 <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">PRIMAX FACILITIES • SOLUÇÕES EMPRESARIAIS</div><h1>Sua empresa precisa <span>resolver.</span><br>A Primax executa.</h1><p class="lead">Manutenção, conservação e apoio operacional em um único canal. Solicite pelo QR Code, site ou PWA Primax e acompanhe sua demanda do início ao fim.</p><div class="actions"><a class="btn" href="#solicitar">SOLICITAR SERVIÇO</a><a class="btn ghost" href="#solucoes">CONHECER SOLUÇÕES</a></div></div>
-<div class="phone"><div class="screen"><div class="apphead"><span>PRIMAX</span><span>•••</span></div><h3>O que precisa resolver hoje?</h3><p>Abra uma solicitação em poucos passos.</p><div class="appgrid"><div class="appitem">🏢 Predial</div><div class="appitem">⚡ Elétrica</div><div class="appitem">❄️ Climatização</div><div class="appitem">🪚 Marcenaria</div><div class="appitem">🧹 Limpeza</div><div class="appitem">👷 Serviços gerais</div></div><div class="appcta">+ NOVA SOLICITAÇÃO</div></div></div></div></section>
+<div class="phone"><div class="screen"><div class="apphead"><span>PRIMAX</span><span>•••</span></div><h3>O que precisa resolver hoje?</h3><p>Abra uma solicitação em poucos passos.</p><div class="appgrid"><div class="appitem">🏢 Predial</div><div class="appitem">⚡ Elétrica</div><div class="appitem">❄️ Climatização</div><div class="appitem">🪚 Marcenaria</div><div class="appitem">🧹 Limpeza</div><div class="appitem">👷 Serviços gerais</div></div><a class="appcta" href="/facilities/atendimento" aria-label="Iniciar uma nova solicitação de serviço">+ NOVA SOLICITAÇÃO ↗</a></div></div></div></section>
 <section class="light" id="solucoes"><div class="wrap"><div class="section-head"><div class="eyebrow">6 SOLUÇÕES • UM ÚNICO CANAL</div><h2>O que sua empresa precisa resolver?</h2><p>Centralize demandas de facilities sem precisar procurar fornecedores diferentes para cada necessidade.</p></div><div class="services">
 <div class="card"><div class="icon">🏢</div><h3>Manutenção Predial</h3><p>Manutenção preventiva, corretiva, conservação e pequenos reparos.</p><a href="#solicitar">Solicitar manutenção →</a></div>
 <div class="card"><div class="icon">⚡</div><h3>Manutenção Elétrica</h3><p>Diagnóstico, instalações, iluminação, reparos e adequações.</p><a href="#solicitar">Solicitar serviço →</a></div>
