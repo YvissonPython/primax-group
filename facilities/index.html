@@ -48,13 +48,25 @@ footer{padding:35px 0;color:#8fa6be;font-size:.82rem}
 @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:55px}.hero{padding-top:125px}.hero h1{max-width:720px}.phone{width:min(360px,85vw)}}
 @media(max-width:520px){.hero h1{font-size:clamp(3rem,12vw,4.4rem)}.hero .eyebrow{font-size:.61rem;letter-spacing:.14em}.hero .lead{font-size:1rem}.phone{transform:rotate(1deg)}.hero{padding-bottom:70px}}
 @media(prefers-reduced-motion:reduce){.hero-grid>div:first-child,.hero-grid>.phone{animation:none}.phone,.hero .btn,.appitem,.appcta{transition:none}}
+
+/* Premium technology illustration in hero */
+.hero-grid>.premium-visual{animation:primaxPhone 1s .15s both}
+.premium-visual{position:relative;width:min(100%,510px);margin-inline:auto;isolation:isolate;filter:drop-shadow(0 25px 55px #0007)}
+.premium-visual::before{content:"";position:absolute;inset:13% 10%;z-index:-1;background:#238aff4a;filter:blur(65px);border-radius:50%;pointer-events:none}
+.premium-visual img{display:block;width:100%;height:auto;max-height:min(75svh,760px);object-fit:contain;object-position:center;mask-image:linear-gradient(to bottom,#000 0%,#000 93%,transparent 100%);transition:transform .6s ease,filter .6s ease}
+.premium-visual:hover img{transform:translateY(-7px) scale(1.018);filter:brightness(1.06)}
+.premium-visual-link{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);white-space:nowrap;padding:13px 20px;background:#1685f5;color:white;border:1px solid #75c0ff;border-radius:12px;box-shadow:0 12px 30px #001a38c9;font-weight:800;font-size:.9rem;transition:background .2s,transform .2s}
+.premium-visual-link:hover{background:#006edb;transform:translateX(-50%) translateY(-3px)}
+@media(max-width:850px){.premium-visual{width:min(100%,430px)}.premium-visual img{max-height:620px}}
+@media(max-width:520px){.premium-visual{width:min(100%,380px)}.premium-visual img{max-height:540px}.premium-visual-link{bottom:4%;font-size:.82rem}}
+@media(prefers-reduced-motion:reduce){.hero-grid>.premium-visual{animation:none}.premium-visual img,.premium-visual-link{transition:none}}
 </style>
 </head>
 <body>
 <header><nav class="wrap"><a class="brand" href="/">PRIMAX GROUP<small>FACILITIES</small></a><div class="navlinks"><a href="#solucoes">Soluções</a><a href="#como">Como funciona</a><a href="#tecnologia">Tecnologia</a><a class="btn" href="#solicitar">Solicitar serviço</a></div></nav></header>
 <main>
 <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">PRIMAX FACILITIES • SOLUÇÕES EMPRESARIAIS</div><h1>Sua empresa precisa <span>resolver.</span><br>A Primax executa.</h1><p class="lead">Manutenção, conservação e apoio operacional em um único canal. Solicite pelo QR Code, site ou PWA Primax e acompanhe sua demanda do início ao fim.</p><div class="actions"><a class="btn" href="#solicitar">SOLICITAR SERVIÇO</a><a class="btn ghost" href="#solucoes">CONHECER SOLUÇÕES</a></div></div>
-<div class="phone"><div class="screen"><div class="apphead"><span>PRIMAX</span><span>•••</span></div><h3>O que precisa resolver hoje?</h3><p>Abra uma solicitação em poucos passos.</p><div class="appgrid"><div class="appitem">🏢 Predial</div><div class="appitem">⚡ Elétrica</div><div class="appitem">❄️ Climatização</div><div class="appitem">🪚 Marcenaria</div><div class="appitem">🧹 Limpeza</div><div class="appitem">👷 Serviços gerais</div></div><a class="appcta" href="/facilities/atendimento" aria-label="Iniciar uma nova solicitação de serviço">+ NOVA SOLICITAÇÃO ↗</a></div></div></div></section>
+<div class="premium-visual"><img src="/assets/primax-tecnologia.png" alt="Apresentação tecnológica do atendimento Primax Facilities com aplicativo e serviços integrados" width="1024" height="1536" fetchpriority="high"><a class="premium-visual-link" href="/facilities/atendimento" aria-label="Iniciar solicitação de serviço Primax">Iniciar solicitação <span aria-hidden="true">↗</span></a></div></div></section>
 <section class="light" id="solucoes"><div class="wrap"><div class="section-head"><div class="eyebrow">6 SOLUÇÕES • UM ÚNICO CANAL</div><h2>O que sua empresa precisa resolver?</h2><p>Centralize demandas de facilities sem precisar procurar fornecedores diferentes para cada necessidade.</p></div><div class="services">
 <div class="card"><div class="icon">🏢</div><h3>Manutenção Predial</h3><p>Manutenção preventiva, corretiva, conservação e pequenos reparos.</p><a href="#solicitar">Solicitar manutenção →</a></div>
 <div class="card"><div class="icon">⚡</div><h3>Manutenção Elétrica</h3><p>Diagnóstico, instalações, iluminação, reparos e adequações.</p><a href="#solicitar">Solicitar serviço →</a></div>
