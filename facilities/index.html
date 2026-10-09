@@ -114,6 +114,28 @@ body{padding-bottom:calc(var(--mobile-dock-height) + env(safe-area-inset-bottom,
 .mobile-intro-photo::after{z-index:2}
 @media(max-width:700px){.mobile-intro-photo .mobile-intro-video{object-position:center 40%}}
 @media(prefers-reduced-motion:reduce){.hero-art .hero-video,.mobile-intro-photo .mobile-intro-video{display:none!important}}
+
+/* 001.mp4 is a portrait 9:16 video with its own brand/title/benefits baked in.
+   Never crop its edges or overlay duplicate marketing copy. */
+@media(min-width:701px){
+.hero{min-height:690px!important;overflow:hidden}
+.hero-art{left:auto!important;right:4%!important;top:88px!important;bottom:auto!important;width:min(34vw,390px)!important;height:min(70vh,640px)!important;border-radius:22px;overflow:hidden;box-shadow:0 26px 70px #0007;background:#06172d}
+.hero-art .hero-video{object-fit:contain!important;object-position:center!important;background:#06172d}
+.hero-art picture,.hero-art picture img{width:100%;height:100%;object-fit:contain!important}
+.hero-inner{position:relative;z-index:3;padding-right:min(40vw,470px)!important}
+.hero-shade{pointer-events:none}
+}
+@media(max-width:700px){
+.mobile-intro{padding-top:62px!important}
+.mobile-intro-photo{height:auto!important;aspect-ratio:9/16!important;width:100%;max-width:430px;margin:0 auto;overflow:hidden;background:#06172d}
+.mobile-intro-photo .mobile-intro-video{object-fit:contain!important;object-position:center center!important;background:#06172d}
+.mobile-intro-photo img{object-fit:contain!important;object-position:center!important}
+.mobile-intro-photo::after{display:none!important}
+.mobile-intro-content{margin-top:0!important;padding-top:14px!important}
+.mobile-intro-content .eyebrow,.mobile-intro-content h1,.mobile-intro-content>p,.mobile-intro-trust{display:none!important}
+.mobile-intro-actions{margin-top:0!important;gap:10px}
+.mobile-intro-actions .btn{min-height:54px}
+}
 </style>
 </head>
 <body>
