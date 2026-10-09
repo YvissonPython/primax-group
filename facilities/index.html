@@ -268,6 +268,63 @@ a,button{-webkit-tap-highlight-color:transparent}
  #profissionais .feature-3d-frame video{display:none!important}
  #profissionais .feature-3d-frame img{opacity:1!important}
 }
+
+/* Compact visual rhythm — desktop and mobile */
+@media(min-width:701px){
+ .quick-start{padding:48px 0!important}
+ .quick-panel{padding:clamp(22px,2.8vw,36px)!important;border-radius:22px}
+ .quick-heading h2{font-size:clamp(1.7rem,2.8vw,2.55rem);margin:9px 0}
+ .quick-heading p{font-size:14px;line-height:1.55}
+ .quick-video-stage{max-width:720px;max-height:270px;margin:19px auto 0;border-radius:16px}
+ .quick-video-stage+.quick-layout{margin-top:20px}
+ .quick-options .quick-service{min-height:68px;padding:11px 13px}
+ .quick-layout{gap:18px}
+ .quick-assistant{padding:16px}
+ .qa-message{margin:13px 0;padding:12px}
+ #profissionais.light{padding-top:52px;padding-bottom:52px}
+ #profissionais .feature-3d-frame{width:min(100%,285px);max-height:480px}
+ #profissionais .feature-3d-stage{padding:5px 10px 14px}
+ .services-section,.process,.quality-section,.ai-section{padding-top:58px;padding-bottom:58px}
+}
+@media(max-width:700px){
+ .mobile-intro{min-height:0!important}
+ .mobile-intro-photo{max-height:49svh;overflow:hidden}
+ .mobile-intro-photo video,.mobile-intro-photo img{max-height:49svh}
+ .mobile-intro-content{padding-top:16px!important;padding-bottom:22px!important}
+ .mobile-intro-content h1{font-size:clamp(25px,7.2vw,34px);line-height:1.15;margin:9px 0}
+ .mobile-intro-content p{font-size:13px;line-height:1.5}
+ .mobile-intro-actions{margin-top:15px}
+ .quick-start{padding:24px 0!important}
+ .quick-panel{padding:17px!important;border-radius:17px}
+ .quick-heading h2{font-size:clamp(25px,7vw,33px);margin:8px 0}
+ .quick-heading p{font-size:13px;line-height:1.5}
+ .quick-video-stage{margin-top:14px;max-height:210px;border-radius:12px}
+ .quick-video-stage+.quick-layout{margin-top:14px}
+ .quick-layout{gap:13px}
+ .quick-options{gap:8px}
+ .quick-options .quick-service{min-height:65px;padding:9px}
+ .qs-icon{width:31px;height:31px;font-size:18px}
+ .qs-copy small{font-size:10px}
+ .quick-assistant{padding:13px;border-radius:15px}
+ .qa-profile img{width:43px;height:43px}
+ .qa-message{padding:11px 13px;margin:12px 0;font-size:12px;line-height:1.5}
+ .quick-assistant p{margin-top:9px}
+ #profissionais.light{padding:32px 0 38px!important}
+ #profissionais .feature{gap:15px!important}
+ #profissionais .feature-copy .section-title{font-size:clamp(25px,7vw,32px);margin:8px 0 10px}
+ #profissionais .feature-copy .bodycopy{font-size:13px;line-height:1.55;margin-bottom:13px}
+ #profissionais .feature-points{gap:7px;margin-bottom:13px}
+ #profissionais .feature-points>div{min-height:42px;padding:8px}
+ #profissionais .feature-copy .btn{min-height:46px}
+ #profissionais .feature-3d-frame,#profissionais .feature-3d-frame:hover{width:min(100%,235px);max-height:418px;border-radius:16px}
+ .services-section,.process,.quality-section,.ai-section{padding-top:38px!important;padding-bottom:38px!important}
+ .section-title{font-size:clamp(25px,7vw,33px)}
+}
+@media(max-width:370px){
+ .quick-options .quick-service{min-height:57px}
+ .quick-video-stage{max-height:175px}
+ #profissionais .feature-3d-frame,#profissionais .feature-3d-frame:hover{width:min(100%,215px)}
+}
 </style>
 </head>
 <body>
