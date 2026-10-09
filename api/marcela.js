@@ -16,10 +16,10 @@ export default async function handler(req,res){
  const summaryLike=/resumo|confirma esses dados|confirma.*registrar|dados que coletei|nome:\\s|telefone:\\s/i;
  const digitsOnly=v=>String(v||"").replace(/\\D/g,"");
  const phoneValid=v=>/^([1-9][0-9])9[0-9]{8}$/.test(digitsOnly(v));
- const allUserText=messages.filter(m=>m.role==="user").map(m=>m.content).join("\\n");
+ const allUserText=messages.filter(m=>m.role==="user").map(m=>m.content).join("\n");
  const phoneFromHistory=allUserText.match(/(?:\\+?55\\s*)?\\(?[1-9][0-9]\\)?[\\s.-]*9[0-9]{4}[\\s.-]*[0-9]{4}/g)?.map(digitsOnly).find(phoneValid)||"";
  const previousSummary=[...messages].reverse().find(m=>m.role==="assistant"&&summaryLike.test(m.content))?.content||"";
- const summaryField=(label)=>{const line=previousSummary.split("\\n").find(x=>new RegExp("^\\\\s*[-•]?\\\\s*"+label+"\\\\s*:","i").test(x));return line?line.split(":").slice(1).join(":").trim():""};
+ const summaryField=(label)=>{const line=previousSummary.split("\n").find(x=>new RegExp("^\\s*[-•]?\\s*"+label+"\\s*:","i").test(x));return line?line.split(":").slice(1).join(":").trim():""};
  if(!phoneValid(answer.phone)&&phoneFromHistory)answer.phone=phoneFromHistory;
  if(!answer.name&&summaryField("Nome")&&!/não informado|nao informado/i.test(summaryField("Nome")))answer.name=summaryField("Nome");
  if(!answer.location&&summaryField("Localização|Bairro|Cidade"))answer.location=summaryField("Localização|Bairro|Cidade");
@@ -32,7 +32,7 @@ export default async function handler(req,res){
  const lastUser=[...messages].reverse().find(m=>m.role==="user")?.content||"";
  const previousAssistant=[...messages].reverse().find(m=>m.role==="assistant")?.content||"";
  const explicitConfirmation=/^(sim[,!. ]|confirmo|está correto|esta correto|pode registrar|autorizo registrar)/i.test(lastUser.trim());
- const hasSummary=/confirma esses dados|confirma.*registrar|dados que coletei/i.test(previousAssistant)&&!(/não informado|nao informado|serviço:\\s*\\n/i.test(previousAssistant));
+ const hasSummary=/confirma esses dados|confirma.*registrar|dados que coletei/i.test(previousAssistant)&&!(/não informado|nao informado|serviço:\s*\n/i.test(previousAssistant));
  if(answer.confirmed&&(!explicitConfirmation||!hasSummary))return res.status(200).json({reply:"Para registrar sua solicitação, preciso que confirme o resumo apresentado. Está tudo correto?",registered:false});
  if(!answer.confirmed)return res.status(200).json({reply:replyText.slice(0,1200)||"Pode me contar mais sobre o serviço?",registered:false});
  const name=String(answer.name||"").trim().slice(0,120),phone=String(answer.phone||"").replace(/\D/g,"").slice(0,20),environment=String(answer.environment||"").toLowerCase(),need=String(answer.need||"").trim().slice(0,1500),location=String(answer.location||"").trim().slice(0,180);
