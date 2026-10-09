@@ -1,0 +1,18 @@
+{
+  "name": "Primax Group — CRM",
+  "short_name": "Primax CRM",
+  "description": "Gestão de atendimentos e operações Primax Group",
+  "start_url": "/facilities/crm",
+  "scope": "/facilities/crm/",
+  "display": "standalone",
+  "background_color": "#07172c",
+  "theme_color": "#07172c",
+  "icons": [
+    {
+      "src": "/assets/primax-mark.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
