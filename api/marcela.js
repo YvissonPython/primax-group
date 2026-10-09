@@ -17,7 +17,7 @@ export default async function handler(req,res){
  const digitsOnly=v=>String(v||"").replace(/\\D/g,"");
  const phoneValid=v=>/^([1-9][0-9])9[0-9]{8}$/.test(digitsOnly(v));
  const allUserText=messages.filter(m=>m.role==="user").map(m=>m.content).join("\n");
- const phoneFromHistory=allUserText.match(/(?:\\+?55\\s*)?\\(?[1-9][0-9]\\)?[\\s.-]*9[0-9]{4}[\\s.-]*[0-9]{4}/g)?.map(digitsOnly).find(phoneValid)||"";
+ const phoneFromHistory=allUserText.match(new RegExp("(?:\\+?55\\s*)?\\(?[1-9][0-9]\\)?[\\s.-]*9[0-9]{4}[\\s.-]*[0-9]{4}","g"))?.map(digitsOnly).find(phoneValid)||"";
  const previousSummary=[...messages].reverse().find(m=>m.role==="assistant"&&summaryLike.test(m.content))?.content||"";
  const summaryField=(label)=>{const line=previousSummary.split("\n").find(x=>new RegExp("^\\s*[-•]?\\s*"+label+"\\s*:","i").test(x));return line?line.split(":").slice(1).join(":").trim():""};
  if(!phoneValid(answer.phone)&&phoneFromHistory)answer.phone=phoneFromHistory;
