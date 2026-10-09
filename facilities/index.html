@@ -221,6 +221,21 @@ a,button{-webkit-tap-highlight-color:transparent}
 @media(max-width:700px){.quick-video-stage{margin-top:19px;border-radius:14px;max-height:none;aspect-ratio:16/9}.quick-video-stage+.quick-layout{margin-top:18px}}
 @media(prefers-reduced-motion:reduce){.quick-video{transition:none}}
 
+
+/* Interaction refinements and stability */
+.quick-service:focus-visible,.qa-cta:focus-visible,.qw-actions button:focus-visible{outline:3px solid #36caff;outline-offset:3px}
+.quick-options .quick-service:active{transform:scale(.99)}
+.qw-field input:focus,.qw-field textarea:focus{outline:2px solid #1488ef;outline-offset:1px;border-color:#1488ef}
+.qw-field input[aria-invalid="true"],.qw-field textarea[aria-invalid="true"]{border-color:#c53b3b;box-shadow:0 0 0 2px #c53b3b18}
+#qw-error:empty{display:none}
+.quick-video-stage video{background:#071b36}
+@media(max-width:700px){
+ #atendimento-rapido{scroll-margin-top:75px}
+ #profissionais{scroll-margin-top:75px}
+ .quick-options .quick-service{touch-action:manipulation}
+ .qw-actions button{min-height:48px}
+ #profissionais .feature-3d-frame.video-ready video{opacity:1}
+}
 /* Third section: refined, balanced mobile presentation */
 @media(max-width:700px){
  #profissionais.light{padding:48px 0 55px;background:linear-gradient(180deg,#f1f7fc 0%,#fff 40%,#f7fbff 100%);overflow:hidden}
@@ -397,9 +412,9 @@ document.querySelectorAll('a.mobile-home-link').forEach(link=>{
  const capture=()=>{fields.querySelectorAll('input,textarea').forEach(el=>state[el.name]=el.value.trim())};
  back.addEventListener('click',()=>{if(step<=1){wizard.hidden=true;buttons.forEach(b=>b.setAttribute('aria-pressed','false'));buttons[0].focus()}else{step--;render()}});
  form.addEventListener('submit',event=>{event.preventDefault();capture();error.textContent='';
-  if(step===1&&state.need.length<5){error.textContent='Descreva brevemente o que precisa resolver.';return}
-  if(step===2&&state.location.length<4){error.textContent='Informe bairro e cidade.';return}
-  if(step===3){const digits=state.phone.replace(/\D/g,'').replace(/^55(?=\d{11}$)/,'');if(state.name.length<2){error.textContent='Informe seu nome.';return}if(!/^[1-9][0-9]9[0-9]{8}$/.test(digits)){error.textContent='Informe um celular com DDD válido.';return}state.phone=digits}
+  if(step===1&&state.need.length<5){error.textContent='Descreva brevemente o que precisa resolver.';fields.querySelector('[name=need]')?.setAttribute('aria-invalid','true');fields.querySelector('[name=need]')?.focus();return}
+  if(step===2&&state.location.length<4){error.textContent='Informe bairro e cidade.';fields.querySelector('[name=location]')?.setAttribute('aria-invalid','true');fields.querySelector('[name=location]')?.focus();return}
+  if(step===3){const digits=state.phone.replace(/\D/g,'').replace(/^55(?=\d{11}$)/,'');if(state.name.length<2){error.textContent='Informe seu nome.';fields.querySelector('[name=name]')?.setAttribute('aria-invalid','true');fields.querySelector('[name=name]')?.focus();return}if(!/^[1-9][0-9]9[0-9]{8}$/.test(digits)){error.textContent='Informe um celular com DDD válido.';fields.querySelector('[name=phone]')?.setAttribute('aria-invalid','true');fields.querySelector('[name=phone]')?.focus();return}state.phone=digits}
   if(step===4){try{sessionStorage.setItem('primax_marcela_handoff',JSON.stringify({...state,createdAt:Date.now()}))}catch(e){error.textContent='Não foi possível preparar os dados. Abra o atendimento e informe os detalhes diretamente.';return}location.href='/facilities/atendimento/solicitar?assunto='+encodeURIComponent(state.service);return}
   step++;render();
  });
