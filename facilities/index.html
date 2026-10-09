@@ -91,6 +91,20 @@ body{padding-bottom:calc(var(--mobile-dock-height) + env(safe-area-inset-bottom,
 }
 @media(max-width:370px){.mobile-intro h1{font-size:1.92rem}.mobile-intro-photo{height:205px}}
 @media(prefers-reduced-motion:reduce){.mobile-intro *{scroll-behavior:auto}}
+
+/* Premium mobile image framing: third fold (professionals) and campaign artwork */
+@media(max-width:900px){
+#profissionais .feature-art,#solucoes .services-art,#marcela .ai-art{height:auto!important;max-height:none!important;aspect-ratio:auto!important;overflow:hidden}
+#profissionais .feature-art img,#solucoes .services-art img,#marcela .ai-art img{display:block;width:100%;height:auto!important;max-height:none!important;min-height:0!important;aspect-ratio:941/1672;object-fit:contain!important;object-position:center center!important;transform:none!important}
+#profissionais .feature-art:hover img,#marcela .ai-art:hover img{transform:none!important}
+}
+@media(max-width:700px){
+#profissionais .feature{gap:25px}
+#profissionais .feature-art{width:100%;margin:0 auto;border-radius:18px;background:#061b36;box-shadow:0 14px 35px #0a2b4b1e}
+#profissionais .feature-art img{border-radius:17px}
+#solucoes .services-art,#marcela .ai-art{width:100%;border-radius:18px}
+#solucoes .services-art img,#marcela .ai-art img{border-radius:17px}
+}
 </style>
 </head>
 <body>
