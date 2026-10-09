@@ -5,12 +5,13 @@ try{
   sessionStorage.removeItem('primax_marcela_handoff');
   const handoff=JSON.parse(raw);
   if(handoff&&Date.now()-Number(handoff.createdAt)<30*60*1000&&handoff.service===subject){
-   const phone=String(handoff.phone||'').replace(/\\D/g,'');
+   const phone=String(handoff.phone||'').replace(/\D/g,'');
    if(/^[1-9][0-9]9[0-9]{8}$/.test(phone)&&String(handoff.name||'').trim()&&String(handoff.need||'').trim()&&String(handoff.location||'').trim()){
     leadState={...leadState,name:String(handoff.name).slice(0,120),phone,need:String(handoff.need).slice(0,900),location:String(handoff.location).slice(0,180),category:String(handoff.service).slice(0,100)};
     const prepared='Já preenchi estes dados no formulário: serviço '+leadState.category+'; necessidade: '+leadState.need+'; bairro/cidade: '+leadState.location+'; nome: '+leadState.name+'; WhatsApp: '+leadState.phone+'. Continue a qualificação sem repetir os dados já fornecidos.';
     input.value=prepared;
     input.placeholder='Revise os dados e toque em enviar';
+    input.setAttribute('aria-label','Resumo da solicitação pronto para enviar à Marcela');
     quick.replaceChildren();
    }
   }
