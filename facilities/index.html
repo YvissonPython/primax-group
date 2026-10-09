@@ -211,6 +211,15 @@ a,button{-webkit-tap-highlight-color:transparent}
 @media(max-width:370px){.quick-options{grid-template-columns:1fr}.quick-options .quick-service{min-height:66px}}
 @media(max-width:700px){.quick-panel{padding:20px}.quick-layout{gap:17px}.quick-options .quick-service{min-height:78px;padding:10px;gap:8px}.qs-icon{width:34px;height:34px;font-size:19px}.qs-copy strong{font-size:12px}.qs-copy small{font-size:10px}.quick-assistant{padding:15px}.quick-wizard{padding:15px}}
 @media(prefers-reduced-motion:reduce){.quick-options .quick-service,.qw-track span{transition:none}}
+
+/* Second fold: cinematic horizontal 16:9 video, no distortion or blocking layers */
+.quick-video-stage{position:relative;width:100%;aspect-ratio:16/9;max-height:390px;overflow:hidden;border-radius:20px;border:1px solid #8edbff4d;background:#06192d url('/assets/primax-servicos-integrados.png') center/cover no-repeat;box-shadow:0 22px 52px #0005;margin-top:26px;isolation:isolate}
+.quick-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;pointer-events:none;opacity:0;transition:opacity .4s ease}
+.quick-video-stage.video-ready .quick-video{opacity:1}
+.quick-video-fallback{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#051b3038,transparent 35%);z-index:1}
+.quick-video-stage+.quick-layout{margin-top:24px}
+@media(max-width:700px){.quick-video-stage{margin-top:19px;border-radius:14px;max-height:none;aspect-ratio:16/9}.quick-video-stage+.quick-layout{margin-top:18px}}
+@media(prefers-reduced-motion:reduce){.quick-video{transition:none}}
 </style>
 </head>
 <body>
@@ -219,6 +228,7 @@ a,button{-webkit-tap-highlight-color:transparent}
 <section class="hero" id="inicio" aria-labelledby="hero-title"><div class="hero-art"><video class="hero-video" autoplay muted loop playsinline preload="none" poster="/assets/primax-group-lancamento.png" aria-hidden="true"><source src="/assets/001.mp4" type="video/mp4"></video><picture><source media="(max-width: 700px)" srcset="/assets/group-lancamento_mobile.png"><img src="/assets/primax-group-lancamento.png" alt="Profissionais da Primax Group em frente a um empreendimento moderno" fetchpriority="high" decoding="async" width="941" height="1672"></picture></div><div class="hero-shade"></div><div class="hero-glow" aria-hidden="true"></div><div class="wrap hero-inner"><div class="hero-copy"><div class="eyebrow">Primax Group • Soluções Integradas</div><h1 id="hero-title">Uma nova forma de <span>cuidar dos seus espaços.</span></h1><p class="bodycopy">Atendimento organizado, profissionais qualificados e tecnologia para resolver as necessidades da sua casa ou empresa.</p><div class="actions"><a class="btn" href="/facilities/atendimento">Solicitar serviço ↗</a><a class="btn ghost" href="#solucoes">Conhecer soluções</a></div></div><div class="trust"><div><b aria-hidden="true">⚡</b> Atendimento ágil</div><div><b aria-hidden="true">✦</b> Equipe qualificada</div><div><b aria-hidden="true">✓</b> Segurança e qualidade</div><div><b aria-hidden="true">▦</b> Soluções integradas</div></div></div></section>
 <section class="mobile-intro" id="inicio-mobile" aria-labelledby="mobile-intro-title"><div class="mobile-intro-photo"><video class="mobile-intro-video" autoplay muted loop playsinline preload="none" poster="/assets/primax-hero-team-poster.jpg" aria-hidden="true"><source src="/assets/001.mp4" type="video/mp4"></video><img src="/assets/primax-hero-team-poster.jpg" alt="Equipe profissional Primax Group" loading="eager" decoding="async" width="1200" height="900"></div><div class="wrap mobile-intro-content"><div class="eyebrow">Tecnologia • Agilidade • Confiança</div><h1 id="mobile-intro-title">Mais que serviços. <span>Soluções para o seu dia a dia.</span></h1><p>Profissionais qualificados para cuidar do seu espaço com organização e agilidade.</p><div class="mobile-intro-actions"><a class="btn" href="/facilities/atendimento">Solicitar serviço <span aria-hidden="true">↗</span></a><a class="mobile-intro-secondary" href="#atendimento-rapido">Escolher um serviço <span aria-hidden="true">↓</span></a></div><div class="mobile-intro-trust"><span aria-hidden="true">✓</span> Atendimento organizado e acompanhado</div></div></section><section class="quick-start" id="atendimento-rapido" aria-labelledby="quick-title"><div class="wrap quick-panel reveal">
 <div class="quick-heading"><div><div class="eyebrow">Central inteligente de serviços</div><h2 id="quick-title">O que você precisa <span>resolver hoje?</span></h2><p>Escolha o serviço que você precisa. A Marcela IA organiza sua solicitação e nossa equipe acompanha os próximos passos.</p></div></div>
+<div class="quick-video-stage" aria-label="Apresentação dos serviços Primax Group"><video class="quick-video" autoplay muted loop playsinline preload="none" poster="/assets/primax-servicos-integrados.png" aria-label="Vídeo demonstrativo de atendimento e execução de serviços"><source src="/assets/002.mp4" type="video/mp4"></video><div class="quick-video-fallback" aria-hidden="true"></div></div>
 <div class="quick-layout"><div class="quick-main"><div class="quick-options" role="group" aria-label="Escolha o tipo de serviço">
 <button type="button" class="quick-service" data-service="Elétrica"><span class="qs-icon" aria-hidden="true">⚡</span><span class="qs-copy"><strong>Elétrica</strong><small>Instalações e reparos</small></span><span class="qs-arrow" aria-hidden="true">↗</span></button>
 <button type="button" class="quick-service" data-service="Ar-condicionado"><span class="qs-icon" aria-hidden="true">❄</span><span class="qs-copy"><strong>Ar-condicionado</strong><small>Instalação e manutenção</small></span><span class="qs-arrow" aria-hidden="true">↗</span></button>
@@ -360,6 +370,21 @@ document.querySelectorAll('a.mobile-home-link').forEach(link=>{
   if(step===4){try{sessionStorage.setItem('primax_marcela_handoff',JSON.stringify({...state,createdAt:Date.now()}))}catch(e){error.textContent='Não foi possível preparar os dados. Abra o atendimento e informe os detalhes diretamente.';return}location.href='/facilities/atendimento/solicitar?assunto='+encodeURIComponent(state.service);return}
   step++;render();
  });
+})();
+
+/* Play second-fold video only when visible; keep poster if 002.mp4 is not uploaded yet. */
+(function(){
+ const stage=document.querySelector('.quick-video-stage'),video=stage?.querySelector('video');if(!video)return;
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ const show=()=>{if(video.readyState>=2)stage.classList.add('video-ready')};
+ video.addEventListener('loadeddata',show);
+ video.addEventListener('error',()=>stage.classList.remove('video-ready'));
+ if('IntersectionObserver'in window){new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting&&!document.hidden&&!reduced.matches){video.preload='metadata';video.play().then(show).catch(()=>{})}
+  else video.pause();
+ }),{rootMargin:'120px',threshold:.08}).observe(stage)}
+ else if(!reduced.matches){video.preload='metadata';video.play().then(show).catch(()=>{})}
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause()});
 })();
 </script>
 </body></html>
