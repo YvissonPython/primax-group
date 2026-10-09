@@ -14,10 +14,14 @@ export default async function handler(req,res){
  if(!r.ok){console.error("OpenAI",r.status);return res.status(502).json({error:"Não consegui responder agora. Tente novamente."})}
  const answer=JSON.parse((await r.json()).choices[0].message.content);
  const summaryLike=/resumo|confirma esses dados|confirma.*registrar|dados que coletei|nome:\\s|telefone:\\s/i;
- const digitsOnly=v=>String(v||"").replace(/\\D/g,"");
+ const digitsOnly=v=>String(v||"").replace(/\D/g,"");
  const phoneValid=v=>/^([1-9][0-9])9[0-9]{8}$/.test(digitsOnly(v));
  const allUserText=messages.filter(m=>m.role==="user").map(m=>m.content).join("\n");
- const phoneFromHistory=allUserText.match(new RegExp("(?:\\+?55\\s*)?\\(?[1-9][0-9]\\)?[\\s.-]*9[0-9]{4}[\\s.-]*[0-9]{4}","g"))?.map(digitsOnly).find(phoneValid)||"";
+ // Extract the latest valid Brazilian mobile number from the actual conversation.
+ // Accept optional +55, punctuation and spaces, but never infer missing digits.
+ const phoneCandidates=[...allUserText.matchAll(/(?:\+?55[\s.-]*)?\(?[1-9][0-9]\)?[\s.-]*9[0-9]{4}[\s.-]*[0-9]{4}/g)]
+  .map(match=>digitsOnly(match[0]).replace(/^55(?=\d{11}$)/,"")).filter(phoneValid);
+ const phoneFromHistory=phoneCandidates.at(-1)||"";
  const previousSummary=[...messages].reverse().find(m=>m.role==="assistant"&&summaryLike.test(m.content))?.content||"";
  const summaryField=(label)=>{const line=previousSummary.split("\n").find(x=>new RegExp("^\\s*[-•]?\\s*"+label+"\\s*:","i").test(x));return line?line.split(":").slice(1).join(":").trim():""};
  if(phoneFromHistory)answer.phone=phoneFromHistory;
