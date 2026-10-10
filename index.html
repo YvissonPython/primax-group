@@ -207,11 +207,26 @@ footer nav a{color:#c5d2e2}
 /* Original Primax emblem on mobile; preserve full horizontal logo on desktop */
 header .brand-logo-mobile{display:none}
 @media(max-width:800px){header .brand-logo-desktop{display:none}header .brand-logo-mobile{display:block;width:58px;height:58px;max-width:58px;max-height:58px;object-fit:contain}header .brand{align-items:center}header .menu{flex:0 0 46px}}
+
+/* Mobile header: institutional logo + tagline, as approved reference */
+header .brand-mobile-stack{display:none}
+@media(max-width:800px){
+ header{height:116px;padding:12px 20px;background:#06172a;border-bottom:1px solid rgba(158,189,220,.2)}
+ header .brand{max-width:calc(100% - 66px);height:100%;align-items:center;overflow:visible}
+ header .brand-logo-desktop{display:none}
+ header .brand-mobile-stack{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;min-width:0;max-width:100%}
+ header .brand-mobile-stack .brand-logo-mobile{display:block;width:auto;height:65px;max-width:min(245px,64vw);max-height:65px;object-fit:contain;object-position:left center}
+ header .brand-mobile-tagline{display:block;font-size:clamp(6px,1.65vw,9px);letter-spacing:.09em;line-height:1.4;font-weight:600;color:#b4becb;white-space:nowrap;max-width:100%}
+ header .menu{font-family:Arial,sans-serif;font-size:2.2rem;font-weight:300;flex:0 0 48px;align-self:center}
+ header>nav{top:116px;max-height:calc(100dvh - 116px)}
+ .hero{padding-top:162px}
+}
+@media(max-width:390px){header{height:105px;padding-inline:14px}header .brand-mobile-stack .brand-logo-mobile{height:56px;max-height:56px;max-width:62vw}header .brand-mobile-tagline{font-size:5.7px;letter-spacing:.055em}header>nav{top:105px;max-height:calc(100dvh - 105px)}.hero{padding-top:150px}}
 </style>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a><div class="progress" aria-hidden="true" style="width: 0%;"></div>
-  <header><a class="brand" href="#inicio" aria-label="Primax Group, início"><img class="brand-logo brand-logo-desktop" src="assets/primax-logo-horizontal.png" alt="Primax Group" width="247" height="72"><img class="brand-logo brand-logo-mobile" src="assets/primax-p-original.webp" alt="Primax Group" width="96" height="96"></a><button class="menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">☰</button><nav id="menu-principal" aria-label="Navegação principal"><a href="#sobre">A Primax</a><a href="#solucoes">Soluções</a><a href="#segmentos">Segmentos</a><a href="/governanca.html">Governança</a><a class="nav-cta" href="#contato">Fale com a Primax ↗</a></nav></header>
+  <header><a class="brand" href="#inicio" aria-label="Primax Group, início"><img class="brand-logo brand-logo-desktop" src="assets/primax-logo-horizontal.png" alt="Primax Group" width="247" height="72"><span class="brand-mobile-stack"><img class="brand-logo brand-logo-mobile" src="assets/primax-logo-horizontal.png" alt="Primax Group" width="247" height="72"><span class="brand-mobile-tagline">SOLUÇÕES INTEGRADAS. EXCELÊNCIA EM CADA ENTREGA.</span></span></a><button class="menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">☰</button><nav id="menu-principal" aria-label="Navegação principal"><a href="#sobre">A Primax</a><a href="#solucoes">Soluções</a><a href="#segmentos">Segmentos</a><a href="/governanca.html">Governança</a><a class="nav-cta" href="#contato">Fale com a Primax ↗</a></nav></header>
   <main id="conteudo">
     <section class="hero" id="inicio" style="--hero-exit: 0.000;"><video class="hero-video" autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="assets/primax-hero-team-poster.jpg" aria-label="Equipe planejando operações integradas"><source src="assets/primax-hero-team-muted.mp4" type="video/mp4"></video><div class="hero-bridge" aria-hidden="true"></div><div class="hero-copy"><h1>Soluções<br><em>integradas.</em><br>Excelência<br>em cada entrega.</h1><p>Uma parceira estratégica para operações que precisam de eficiência, segurança e execução profissional.</p><div class="hero-actions"><a class="button" href="#solucoes">Explore as soluções <span aria-hidden="true">↗</span></a><a class="text-link" href="#sobre">Conheça a Primax</a></div></div><div class="hero-stage" aria-hidden="true"><span class="hero-index">INTEGRAÇÃO / CONFIANÇA / EXCELÊNCIA</span></div><a class="scroll-cue" href="#movimento">Role para descobrir</a></section>
     <section class="motion-reel" id="movimento" aria-label="Primax em movimento"><div class="motion-pin" data-scene="0" style="--reel-p: 0.000; --entry-glow: 0.000;"><video class="scene1-video" loop="" playsinline="" preload="metadata" poster="assets/primax-hero-3d.png" aria-hidden="true"><source src="assets/primax-scene-1.mp4" type="video/mp4"></video><video class="scene2-video" loop="" playsinline="" preload="metadata" poster="assets/primax-scene-2-poster.png" aria-hidden="true"><source src="assets/primax-scene-2.mp4" type="video/mp4"></video><video class="scene3-video" loop="" playsinline="" preload="metadata" poster="assets/primax-scene-3-poster.png" aria-hidden="true"><source src="assets/primax-scene-3.mp4" type="video/mp4"></video><div class="entry-flare" aria-hidden="true"></div><div class="scene-wipe" aria-hidden="true"></div><div class="motion-orbit" aria-hidden="true"></div><div class="motion-object" aria-hidden="true"><div class="object-face"><img src="assets/slide-000.jpg" alt=""></div><div class="gloss"></div></div><div class="motion-shadow" aria-hidden="true"></div>
