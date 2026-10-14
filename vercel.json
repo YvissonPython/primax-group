@@ -26,19 +26,19 @@
   "rewrites": [
     {
       "source": "/servicos",
-      "destination": "/facilities/index.html"
+      "destination": "/facilities"
     },
     {
       "source": "/crm",
-      "destination": "/facilities/crm/index.html"
+      "destination": "/facilities/crm"
     },
     {
       "source": "/atendimento",
-      "destination": "/facilities/atendimento/index.html"
+      "destination": "/facilities/atendimento"
     },
     {
       "source": "/atendimento/solicitar",
-      "destination": "/facilities/atendimento/solicitar/index.html"
+      "destination": "/facilities/atendimento/solicitar"
     },
     {
       "source": "/crm/manifest.webmanifest",
