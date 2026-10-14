@@ -39,6 +39,10 @@
     {
       "source": "/atendimento/solicitar",
       "destination": "/facilities/atendimento/solicitar/index.html"
+    },
+    {
+      "source": "/crm/manifest.webmanifest",
+      "destination": "/facilities/crm/manifest.webmanifest"
     }
   ]
 }
