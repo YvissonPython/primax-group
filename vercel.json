@@ -1,4 +1,44 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/facilities",
+      "destination": "/servicos",
+      "permanent": true
+    },
+    {
+      "source": "/facilities/crm",
+      "destination": "/crm",
+      "permanent": true
+    },
+    {
+      "source": "/facilities/atendimento",
+      "destination": "/atendimento",
+      "permanent": true
+    },
+    {
+      "source": "/facilities/atendimento/solicitar",
+      "destination": "/atendimento/solicitar",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/servicos",
+      "destination": "/facilities/index.html"
+    },
+    {
+      "source": "/crm",
+      "destination": "/facilities/crm/index.html"
+    },
+    {
+      "source": "/atendimento",
+      "destination": "/facilities/atendimento/index.html"
+    },
+    {
+      "source": "/atendimento/solicitar",
+      "destination": "/facilities/atendimento/solicitar/index.html"
+    }
+  ]
 }
