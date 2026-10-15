@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/colaborador",
+      "destination": "/crm",
+      "permanent": false
+    },
+    {
       "source": "/facilities",
       "destination": "/servicos",
       "permanent": true
