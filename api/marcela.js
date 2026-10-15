@@ -47,9 +47,14 @@ export default async function handler(req,res){
  if(requiredMissing.length&&(answer.confirmed||triesToSummarize))return res.status(200).json({reply:"Já tenho boa parte das informações 💙 Para encaminhar corretamente, só falta "+requiredMissing[0]+". Pode me informar?",registered:false,needsCorrection:true,leadState:currentState()});
  const lastUser=[...messages].reverse().find(m=>m.role==="user")?.content||"";
  const previousAssistant=[...messages].reverse().find(m=>m.role==="assistant")?.content||"";
- const explicitConfirmation=/^(sim[,!. ]|confirmo|está correto|esta correto|pode registrar|autorizo registrar)/i.test(lastUser.trim());
- const hasSummary=/confirma esses dados|confirma.*registrar|dados que coletei/i.test(previousAssistant)&&!(/não informado|nao informado|serviço:\s*\n/i.test(previousAssistant));
- if(answer.confirmed&&(!explicitConfirmation||!hasSummary))return res.status(200).json({reply:"Para registrar sua solicitação, preciso que confirme o resumo apresentado. Está tudo correto?",registered:false,leadState:currentState()});
+ const normalizedConfirmation=lastUser.normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim().toLowerCase().replace(/[.!]+$/,"").trim();
+ const explicitConfirmation=/^(sim|sim confirmo|sim confirmo os dados e autorizo registrar minha solicitacao|confirmo|tudo certo|esta tudo certo|esta correto|correto|pode registrar|autorizo registrar|isso mesmo|pode seguir|ok pode registrar|confirmado)$/.test(normalizedConfirmation);
+ // The previous assistant message is the confirmation prompt. Never ask for a second confirmation.
+ const hasSummary=/confirma|confirmar|esta tudo correto|tudo certo|resumo/i.test(previousAssistant)
+   && (/registrar|solicitacao|dados|resumo|tudo correto/i.test(previousAssistant))
+   && !/nao informado|servico:\\s*\\n/i.test(previousAssistant);
+ if(explicitConfirmation&&hasSummary&&requiredMissing.length===0)answer.confirmed=true;
+ if(answer.confirmed&&(!explicitConfirmation||!hasSummary))return res.status(200).json({reply:"Para registrar sua solicitação, confira o resumo e responda Sim, confirmo.",registered:false,leadState:currentState()});
  if(!answer.confirmed)return res.status(200).json({reply:replyText.slice(0,1200)||"Pode me contar mais sobre o serviço?",registered:false,leadState:currentState()});
  const name=String(answer.name||"").trim().slice(0,120),phone=String(answer.phone||"").replace(/\D/g,"").slice(0,20),environment=String(answer.environment||"").toLowerCase(),need=String(answer.need||"").trim().slice(0,1500),location=String(answer.location||"").trim().slice(0,180);
  if(!name||!/^([1-9][0-9])9[0-9]{8}$/.test(phone)||!["casa","empresa"].includes(environment)||!need||!location){
