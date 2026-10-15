@@ -198,6 +198,15 @@ main{min-width:0;padding:clamp(18px,2.6vw,38px);background:radial-gradient(circl
 #notifCount{position:absolute;top:-5px;right:-5px;min-width:17px;height:17px;border-radius:10px;background:#ed4655;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;padding:0 3px;border:2px solid white}
 #notifPanel{right:9px!important;top:auto!important;bottom:calc(123px + env(safe-area-inset-bottom,0px))!important;width:calc(100vw - 18px)!important;max-height:55vh!important}
 }
+</style><style>
+@media(max-width:700px){
+#dashboard #board .ticket-stage-actions{display:flex;align-items:center;justify-content:space-between;gap:7px;margin-top:8px}
+#dashboard #board .ticket-stage-actions .ticket-move-action{margin:0!important;flex:1;min-width:0}
+#dashboard #board .ticket-stage-actions .ticket-back-action{background:#fff!important;color:#4b647d!important;border-color:#d5dfe8!important}
+.crm-mobile-actions #notifBell{position:relative!important;right:auto!important;bottom:auto!important;top:auto!important;left:auto!important;display:flex;flex:0 0 38px;width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;padding:0!important;margin:0!important;border-radius:12px!important;z-index:auto!important;background:#153553!important;box-shadow:none!important;font-size:17px!important}
+.crm-mobile-actions #notifBell.hidden{display:none!important}
+#notifPanel{position:fixed!important;top:66px!important;bottom:auto!important;right:10px!important;left:auto!important;width:min(360px,calc(100vw - 20px))!important;max-height:65vh!important;z-index:1100!important}
+}
 </style></head><body>
 <section id="login" class="login"><div class="loginbox"><div class="brand">PRIMAX <small>FACILITIES • CRM</small></div><h1>Acesso administrativo</h1><p>Entre com seu usuário autorizado da Primax Facilities.</p><form id="loginForm"><div class="field"><label>E-mail</label><input id="email" type="email" autocomplete="username" placeholder="seu@email.com" required></div><div class="field"><label>Senha</label><input id="password" type="password" autocomplete="current-password" required></div><button class="btn">Entrar no CRM</button><button class="btn secondary" type="button" id="forgotPassword" style="margin-left:8px">Esqueci minha senha</button><div id="loginMsg" class="msg"></div></form></div></section>
 <section id="passwordSetup" class="login hidden"><div class="loginbox"><div class="brand">PRIMAX <small>FACILITIES</small></div><h1>Definir senha de acesso</h1><p>Crie uma senha individual para proteger seu painel.</p><form id="passwordSetupForm"><div class="field"><label>Nova senha</label><input id="newPassword" type="password" autocomplete="new-password" minlength="12" required placeholder="Mínimo 12 caracteres"></div><div class="field"><label>Confirme a nova senha</label><input id="confirmPassword" type="password" autocomplete="new-password" minlength="12" required></div><button class="btn">Salvar minha senha</button><div id="passwordSetupMsg" class="msg" role="status"></div></form></div></section><div id="app" class="shell hidden"><aside><div class="asidebrand">PRIMAX <small>FACILITIES • CRM</small></div><nav><div class="nav active" data-view="dashboard">Visão Geral</div><div class="nav" data-view="leads">Leads</div><div class="nav" data-view="agenda">Agenda Operacional</div><div class="nav" data-view="colaborador">Área do Colaborador</div><div class="nav" data-view="clientes">Clientes</div><div class="nav" data-view="catalogo">Catálogo de Serviços</div><div class="nav management" data-view="prestadores">Colaboradores</div><div class="nav management" data-view="financeiro">Financeiro</div><div class="nav management" data-view="indicacoes">Indicações</div><div class="nav hidden" data-view="demandas" id="demandNav">Agenda de Demandas</div><div class="nav hidden" data-view="auditoria" id="auditNav">Auditoria</div></nav><div class="userbox"><b id="memberName">Administrador</b><span id="memberRole"></span><br><button id="logout" class="btn danger" style="margin-top:10px;padding:7px 10px">Sair</button></div></aside><div class="crm-mobile-top"><div class="crm-mobile-brand"><img src="/assets/primax-mark.png" alt=""><span>PRIMAX GROUP<small>CRM • OPERAÇÕES</small></span></div><div class="crm-mobile-actions"><button type="button" id="crmRefresh" aria-label="Atualizar dados" title="Atualizar dados">↻</button><button type="button" id="crmMobileLogout" aria-label="Sair do CRM" title="Sair">⏻</button></div></div><main>
@@ -258,7 +267,7 @@ document.getElementById('boardPrev').addEventListener('click',()=>{primaxBoardIn
 document.getElementById('boardNext').addEventListener('click',()=>{primaxBoardIndex++;updateMobileBoard()});
 (function(){const board=document.getElementById('board');let startX=0,startY=0;board.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;startX=e.touches[0].clientX;startY=e.touches[0].clientY},{passive:true});board.addEventListener('touchend',e=>{if(window.innerWidth>700||!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.5){primaxBoardIndex+=dx<0?1:-1;updateMobileBoard()}},{passive:true})})();
 function renderBoard(){$('board').innerHTML=cols.map(([key,label])=>{const rows=tickets.filter(t=>t.operational_status===key);return '<div class="col"><div class="colhead">'+label+' <span class="count">'+rows.length+'</span></div>'+(rows.length?rows.map(ticketCard).join(''):'<div class="empty">Nenhum chamado.</div>')+'</div>'}).join('');updateMobileBoard()}
-function ticketCard(t){const customer=customers.find(c=>c.id===t.customer_id);const who=customer?(customer.company_name||customer.name):'Sem cliente';return '<div class="ticket" draggable="true" data-ticket="'+t.id+'"><span class="tag '+esc(t.urgency)+'">'+esc((t.urgency||'').toUpperCase())+'</span><span class="ticket-drag-handle" aria-label="Segure para arrastar" title="Segure para arrastar">⠿</span><br><b>'+esc(t.service_name||t.category)+'</b><p>'+esc(t.problem)+'</p><div class="meta"><span>'+esc(t.environment)+'</span><span>'+esc(t.model)+'</span></div>'+(cols.findIndex(([status])=>status===t.operational_status)<cols.length-1?'<button type="button" class="ticket-move-action" data-move-ticket="'+t.id+'">Avançar →</button>':'')+'</div>'}
+function ticketCard(t){const customer=customers.find(c=>c.id===t.customer_id);const who=customer?(customer.company_name||customer.name):'Sem cliente';return '<div class="ticket" draggable="true" data-ticket="'+t.id+'"><span class="tag '+esc(t.urgency)+'">'+esc((t.urgency||'').toUpperCase())+'</span><span class="ticket-drag-handle" aria-label="Segure para arrastar" title="Segure para arrastar">⠿</span><br><b>'+esc(t.service_name||t.category)+'</b><p>'+esc(t.problem)+'</p><div class="meta"><span>'+esc(t.environment)+'</span><span>'+esc(t.model)+'</span></div><div class="ticket-stage-actions">'+(cols.findIndex(([status])=>status===t.operational_status)>0?'<button type="button" class="ticket-move-action ticket-back-action" data-move-ticket="'+t.id+'" data-direction="back">← Voltar</button>':'')+(cols.findIndex(([status])=>status===t.operational_status)<cols.length-1?'<button type="button" class="ticket-move-action" data-move-ticket="'+t.id+'" data-direction="forward">Avançar →</button>':'')+'</div></div>'}
 function localDay(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
 function agendaRows(){return tickets.filter(t=>t.execution_date&&!['concluido','pos_venda','cancelado'].includes(t.operational_status)).sort((a,b)=>new Date(a.execution_date)-new Date(b.execution_date))}
 let calendarCursor=new Date();calendarCursor.setDate(1);
@@ -338,10 +347,10 @@ document.getElementById('board').addEventListener('click',async e=>{
  if(!t)return;
  const current=cols.findIndex(([status])=>status===t.operational_status);
  if(current<0||current>=cols.length-1)return;
- const next=cols[current+1][0];
- button.disabled=true;button.textContent='Salvando...';
+ const direction=button.dataset.direction==='back'?-1:1;const destination=current+direction;if(destination<0||destination>=cols.length)return;const next=cols[destination][0];
+ button.disabled=true;const label=button.textContent;button.textContent='Salvando...';
  try{await moveTicket(id,next)}
- finally{if(button.isConnected){button.disabled=false;button.textContent='Avançar →'}}
+ finally{if(button.isConnected){button.disabled=false;button.textContent=label}}
 },true);
 const oldRenderBoard=renderBoard;renderBoard=function(){oldRenderBoard();enableDnD()};
 async function shareProvider(id,channel){
@@ -475,5 +484,15 @@ next.addEventListener('click',e=>{if(window.innerWidth<=700){e.stopImmediateProp
 let raf=false;board.addEventListener('scroll',()=>{if(!raf){raf=true;requestAnimationFrame(()=>{raf=false;sync()})}},{passive:true});
 new MutationObserver(()=>requestAnimationFrame(sync)).observe(board,{childList:true});
 window.addEventListener('resize',sync,{passive:true});sync();
+})();
+</script><script>
+(function(){
+const bell=document.getElementById('notifBell');
+const mobileActions=document.querySelector('.crm-mobile-actions');
+const anchor=bell?.nextSibling;
+const parent=bell?.parentNode;
+if(!bell||!mobileActions)return;
+function place(){if(window.innerWidth<=700){if(bell.parentNode!==mobileActions)mobileActions.insertBefore(bell,mobileActions.firstChild)}else if(parent&&bell.parentNode!==parent){parent.insertBefore(bell,anchor)}}
+place();window.addEventListener('resize',place,{passive:true});
 })();
 </script></body></html>
