@@ -12,7 +12,7 @@
       "src": "/assets/primax-mark.png",
       "sizes": "any",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }
