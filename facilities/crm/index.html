@@ -243,4 +243,15 @@ document.addEventListener('click',e=>{if(!e.target.closest('#crmMoreMenu')&&!e.t
 window.addEventListener('offline',()=>{document.getElementById('crmRefresh').title='Sem conexão — dados não disponíveis offline'});
 window.addEventListener('online',()=>{document.getElementById('crmRefresh').title='Atualizar dados'});
 })();
+</script><script>
+(function(){
+ if(location.pathname.replace(/\/$/,'')!=='/colaborador')return;
+ const login=document.getElementById('login');
+ if(!login)return;
+ const brand=login.querySelector('.brand small');if(brand)brand.textContent='GROUP • COLABORADORES';
+ const title=login.querySelector('h1');if(title)title.textContent='Portal do Colaborador';
+ const description=login.querySelector('p');if(description)description.textContent='Entre com seu acesso individual para acompanhar e executar seus serviços.';
+ const button=login.querySelector('form button.btn');if(button)button.textContent='Entrar no portal';
+ document.title='Portal do Colaborador | Primax Group';
+})();
 </script></body></html>
