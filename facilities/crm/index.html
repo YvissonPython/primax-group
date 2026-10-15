@@ -186,20 +186,25 @@ async function shareProvider(id,channel){
  const p=providers.find(x=>x.id===id);if(!p)return;
  const digits=String(p.phone||'').replace(/\D/g,'');
  if(channel==='whatsapp'&&!/^[1-9][0-9]9[0-9]{8}$/.test(digits)){alert('Cadastre o WhatsApp do colaborador com DDD + 9 dígitos antes de enviar.');return}
- if(!p.email){alert('Cadastre o e-mail do colaborador antes de gerar o convite.');return}
- if(p.user_id){alert('Esta conta já está vinculada. Oriente o colaborador a acessar o portal ou usar Esqueci minha senha.');return}
- if(!confirm('Gerar um link individual de ativação para '+p.name+' e abrir '+(channel==='whatsapp'?'WhatsApp':'e-mail')+'?'))return;
- // Open on the user's click, before any async call, so browsers do not block the WhatsApp tab.
- const tab=channel==='whatsapp'?window.open('about:blank','_blank'):null;
- if(tab){tab.document.title='Preparando convite Primax';tab.document.body.textContent='Preparando mensagem de ativação da Primax Facilities...'}
+ if(!p.email){alert('Cadastre o e-mail do colaborador antes de enviar o convite.');return}
+ const portal='https://primaxgroupbr.com/colaborador';
+ const introduction='Olá, '+p.name+'! 👋\n\nVocê foi cadastrado(a) na equipe de colaboradores da *Primax Group*.\n\nSeu portal de acesso é: '+portal+'\n\n';
+ const pending=introduction+'Seu acesso individual está em preparação. Aguarde o convite de ativação para definir sua senha.\n\n*Equipe Primax Group*';
+ const existing=introduction+'Caso já tenha ativado sua conta, entre com seu e-mail e senha. Se precisar, use a opção *Esqueci minha senha*.\n\n*Equipe Primax Group*';
+ const send=(msg)=>{if(channel==='whatsapp'){const url='https://wa.me/55'+digits+'?text='+encodeURIComponent(msg);const opened=window.open(url,'_blank','noopener,noreferrer');if(!opened){window.location.href=url}}else{window.location.href='mailto:'+encodeURIComponent(p.email)+'?subject='+encodeURIComponent('Acesso ao Portal do Colaborador • Primax Group')+'&body='+encodeURIComponent(msg)}};
+ if(p.user_id){send(existing);return}
+ if(channel==='whatsapp'){
+   // O botão WhatsApp nunca depende de uma Edge Function: abre o wa.me imediatamente.
+   send(pending);return;
+ }
  try{
   const {data:{session}}=await sb.auth.getSession();if(!session)throw Error('Faça login novamente');
   const response=await fetch(SUPABASE_URL+'/functions/v1/servicos-provider-invite',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+session.access_token},body:JSON.stringify({provider_id:id})});
-  const data=await response.json();if(!response.ok)throw Error(String(data.error||'Falha ao criar convite'));
-  const msg='Olá, '+p.name+'! 👋\n\nSeu cadastro na rede de colaboradores *Primax Group* foi realizado.\n\nPara ativar seu acesso individual ao painel, utilize o link abaixo e defina sua senha:\n'+data.link+'\n\nPor segurança, não compartilhe este convite.\n\nEquipe Primax Facilities.';
-  if(channel==='whatsapp'){const url='https://wa.me/55'+digits+'?text='+encodeURIComponent(msg);if(tab&&!tab.closed)tab.location.replace(url);else{await navigator.clipboard?.writeText(msg).catch(()=>{});alert('O navegador bloqueou a abertura do WhatsApp. Permita pop-ups e tente novamente. A mensagem foi copiada, se permitido.')}}else{window.location.href='mailto:'+encodeURIComponent(p.email)+'?subject='+encodeURIComponent('Ative seu acesso • Primax Facilities')+'&body='+encodeURIComponent(msg)}
+  if(!response.ok)throw Error('Não foi possível gerar o convite');
+  const data=await response.json();if(!data.link)throw Error('Convite sem link de ativação');
+  send(introduction+'Para ativar seu acesso individual, abra o link e defina sua senha:\n'+data.link+'\n\nPor segurança, não compartilhe este convite.\n\n*Equipe Primax Group*');
   await loadBusiness();
- }catch(err){if(tab&&!tab.closed)tab.close();alert('Não foi possível gerar convite: '+err.message)}
+ }catch(err){alert('Não foi possível gerar o link de ativação: '+err.message+'. Você pode enviar uma mensagem de apresentação pelo WhatsApp; a ativação da conta ainda precisa ser concluída.')}
 }
 const money=v=>Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 const businessFields={provider:[['name','Nome do colaborador','text',true],['phone','WhatsApp com DDD','tel'],['email','E-mail do colaborador','email'],['specialty','Especialidades','text'],['region','Região atendida','text'],['document_number','CPF/CNPJ (uso interno)','text'],['status','Situação','select:pendente|aprovado|suspenso']],finance:[['description','Descrição','text',true],['kind','Tipo','select:receita|despesa|repasse|bonificacao'],['amount','Valor (R$)','number',true],['status','Situação','select:previsto|aprovado|pago|cancelado'],['ticket_id','Chamado (opcional)','ticket'],['provider_id','Prestador (opcional)','provider'],['due_date','Vencimento','date']],referral:[['provider_id','Prestador indicador','provider',true],['customer_name','Cliente indicado','text',true],['lead_id','Lead (opcional)','lead'],['bonus_percent','Bônus (%)','number'],['status','Situação','select:pendente|aprovada|liberada|paga|cancelada']]};
