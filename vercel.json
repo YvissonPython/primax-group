@@ -21,11 +21,6 @@
       "source": "/facilities/atendimento/solicitar",
       "destination": "/atendimento/solicitar",
       "permanent": true
-    },
-    {
-      "source": "/instalar-colaborador",
-      "destination": "https://primaxgroup.com.br/app-colaborador",
-      "permanent": false
     }
   ],
   "rewrites": [
