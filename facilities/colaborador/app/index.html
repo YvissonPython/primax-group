@@ -508,7 +508,7 @@ window.addEventListener('online',()=>{document.getElementById('crmRefresh').titl
 })();
 </script><script>
 (function(){
- if(location.pathname.replace(/\/$/,'')!=='/colaborador')return;
+ if(!['/colaborador','/app-colaborador'].includes(location.pathname.replace(/\/$/,'')))return;
  const login=document.getElementById('login');
  if(!login)return;
  const brand=login.querySelector('.brand small');if(brand)brand.textContent='GROUP • COLABORADORES';
