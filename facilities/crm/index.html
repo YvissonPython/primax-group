@@ -251,9 +251,10 @@ $('loginForm').onsubmit=async e=>{e.preventDefault();$('loginMsg').textContent='
 $('logout').onclick=async()=>{await sb.auth.signOut();location.reload()};
 $('forgotPassword').onclick=async()=>{const email=$('email').value.trim();if(!email){$('loginMsg').textContent='Informe seu e-mail para recuperar o acesso.';return}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});$('loginMsg').textContent=error?'Não foi possível solicitar a recuperação: '+error.message:'Se este e-mail estiver cadastrado, você receberá instruções para recuperar a senha.'};
 let passwordRecovery=false;
+if(location.hash.includes('type=invite'))setTimeout(()=>showPasswordSetup(),600);
 function showPasswordSetup(){passwordRecovery=true;$('login').classList.add('hidden');$('app').classList.add('hidden');$('passwordSetup').classList.remove('hidden')}
 $('passwordSetupForm').onsubmit=async e=>{e.preventDefault();const p=$('newPassword').value;if(p.length<12){$('passwordSetupMsg').textContent='Use pelo menos 12 caracteres.';return}if(p!==$('confirmPassword').value){$('passwordSetupMsg').textContent='As senhas não coincidem.';return}const {error}=await sb.auth.updateUser({password:p});if(error){$('passwordSetupMsg').textContent=error.message;return}passwordRecovery=false;$('passwordSetupMsg').textContent='Senha atualizada!';history.replaceState({},'',location.pathname);$('passwordSetup').classList.add('hidden');await boot()};
-sb.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY')showPasswordSetup()});
+sb.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'||(event==='SIGNED_IN'&&location.hash.includes('type=invite')))showPasswordSetup()});
 
 async function boot(){const {data:{user}}=await sb.auth.getUser();if(!user)return;currentUser=user;const {data:member,error}=await sb.from('facilities_members').select('full_name,role,active').eq('user_id',user.id).single();if(error||!member?.active){await sb.auth.signOut();$('loginMsg').textContent='Usuário sem autorização ativa na Primax.';return}currentMember=member;$('auditNav').classList.toggle('hidden',member.role!=='admin');$('auditMobile').classList.toggle('hidden',member.role!=='admin');$('memberName').textContent=member.full_name||user.email;$('memberRole').textContent=member.role.toUpperCase();$('login').classList.add('hidden');$('app').classList.remove('hidden');document.querySelectorAll('.nav.management').forEach(n=>n.classList.toggle('hidden',!['admin','operacional'].includes(member.role)));$('demandNav').classList.toggle('hidden',!(member.role==='admin'||['contato@primaxgroupbr.com','financeiro@primaxgroupbr.com','qualidade@primaxgroupbr.com','yvissondigital@gmail.com'].includes((user.email||'').toLowerCase())));$('demandMobile').classList.toggle('hidden',$('demandNav').classList.contains('hidden'));$('notifBell').classList.remove('hidden');window.primaxLoadNotifications?.();if(member.role==='colaborador'){document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('hidden',n.dataset.view!=='colaborador'));document.querySelectorAll('main>section').forEach(s=>s.classList.add('hidden'));$('colaborador').classList.remove('hidden');const employeeNav=document.querySelector('.nav[data-view="colaborador"]');if(employeeNav)employeeNav.classList.add('active')}await loadData()}
 window.primaxRefreshData=()=>loadData();
@@ -380,14 +381,11 @@ async function shareProvider(id,channel){
  const existing=introduction+'Caso já tenha ativado sua conta, entre com seu e-mail e senha. Se precisar, use a opção *Esqueci minha senha*.\n\n*Equipe Primax Group*';
  const send=(msg)=>{if(channel==='whatsapp'){const url='https://wa.me/55'+digits+'?text='+encodeURIComponent(msg);const opened=window.open(url,'_blank','noopener,noreferrer');if(!opened){window.location.href=url}}else{window.location.href='mailto:'+encodeURIComponent(p.email)+'?subject='+encodeURIComponent('Acesso ao Portal do Colaborador • Primax Group')+'&body='+encodeURIComponent(msg)}};
  if(p.user_id){send(existing);return}
- if(channel==='whatsapp'){
-   // O botão WhatsApp nunca depende de uma Edge Function: abre o wa.me imediatamente.
-   send(pending);return;
- }
+ // Ambos os canais geram primeiro o convite de ativação seguro.
  try{
   const {data:{session}}=await sb.auth.getSession();if(!session)throw Error('Faça login novamente');
-  const response=await fetch(SUPABASE_URL+'/functions/v1/servicos-provider-invite',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+session.access_token},body:JSON.stringify({provider_id:id})});
-  if(!response.ok)throw Error('Não foi possível gerar o convite');
+  const response=await fetch(SUPABASE_URL+'/functions/v1/facilities-provider-invite',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+session.access_token},body:JSON.stringify({provider_id:id})});
+  if(!response.ok){const failure=await response.json().catch(()=>({}));throw Error(failure.error||'Não foi possível gerar o convite')}
   const data=await response.json();if(!data.link)throw Error('Convite sem link de ativação');
   send(introduction+'Para ativar seu acesso individual, abra o link e defina sua senha:\n'+data.link+'\n\nPor segurança, não compartilhe este convite.\n\n*Equipe Primax Group*');
   await loadBusiness();
