@@ -1,0 +1,19 @@
+{
+  "id": "/atendimento/solicitar",
+  "name": "Marcela IA | Primax Group",
+  "short_name": "Marcela IA",
+  "description": "Atendimento da Primax Group",
+  "start_url": "/atendimento/solicitar",
+  "scope": "/atendimento/solicitar",
+  "display": "standalone",
+  "background_color": "#092746",
+  "theme_color": "#092746",
+  "icons": [
+    {
+      "src": "/assets/primax-marcela-home-icon.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
