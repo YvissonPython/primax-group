@@ -18,18 +18,13 @@
       "permanent": true
     },
     {
-      "source": "/facilities/atendimento/solicitar",
-      "destination": "/atendimento/solicitar",
-      "permanent": true
-    },
-    {
       "source": "/app-colaborador",
       "destination": "/colaborador",
       "permanent": false
     },
     {
-      "source": "/atendimento",
-      "destination": "/atendimento/solicitar",
+      "source": "/atendimento/solicitar",
+      "destination": "/atendimento",
       "permanent": false
     }
   ],
@@ -47,10 +42,6 @@
       "destination": "/facilities/crm"
     },
     {
-      "source": "/atendimento/solicitar",
-      "destination": "/facilities/atendimento/solicitar"
-    },
-    {
       "source": "/crm/manifest.webmanifest",
       "destination": "/facilities/crm/manifest.webmanifest"
     },
@@ -61,6 +52,10 @@
     {
       "source": "/colaborador/manifest.webmanifest",
       "destination": "/facilities/colaborador/manifest.webmanifest"
+    },
+    {
+      "source": "/atendimento",
+      "destination": "/facilities/atendimento/solicitar"
     }
   ]
 }
