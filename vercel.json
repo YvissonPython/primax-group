@@ -47,6 +47,10 @@
     {
       "source": "/crm/manifest.webmanifest",
       "destination": "/facilities/crm/manifest.webmanifest"
+    },
+    {
+      "source": "/atendimento/solicitar/manifest.webmanifest",
+      "destination": "/facilities/atendimento/solicitar/manifest.webmanifest"
     }
   ]
 }
