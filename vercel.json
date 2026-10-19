@@ -26,7 +26,7 @@
   "rewrites": [
     {
       "source": "/colaborador",
-      "destination": "/facilities/crm"
+      "destination": "/facilities/colaborador"
     },
     {
       "source": "/servicos",
