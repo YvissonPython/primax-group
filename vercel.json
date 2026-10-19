@@ -55,6 +55,14 @@
     {
       "source": "/colaborador/manifest.webmanifest",
       "destination": "/facilities/colaborador/manifest.webmanifest"
+    },
+    {
+      "source": "/app-colaborador",
+      "destination": "/facilities/colaborador/app"
+    },
+    {
+      "source": "/app-colaborador/manifest.webmanifest",
+      "destination": "/facilities/colaborador/app/manifest.webmanifest"
     }
   ]
 }
