@@ -21,6 +21,11 @@
       "source": "/facilities/atendimento/solicitar",
       "destination": "/atendimento/solicitar",
       "permanent": true
+    },
+    {
+      "source": "/app-colaborador",
+      "destination": "/colaborador",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -55,14 +60,6 @@
     {
       "source": "/colaborador/manifest.webmanifest",
       "destination": "/facilities/colaborador/manifest.webmanifest"
-    },
-    {
-      "source": "/app-colaborador",
-      "destination": "/facilities/colaborador/app"
-    },
-    {
-      "source": "/app-colaborador/manifest.webmanifest",
-      "destination": "/facilities/colaborador/app/manifest.webmanifest"
     }
   ]
 }
