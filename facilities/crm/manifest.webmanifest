@@ -3,7 +3,7 @@
   "short_name": "Primax CRM",
   "description": "Gestão de atendimentos e operações Primax Group",
   "start_url": "/crm",
-  "scope": "/crm/",
+  "scope": "/crm",
   "display": "standalone",
   "background_color": "#07172c",
   "theme_color": "#07172c",
@@ -27,5 +27,5 @@
       "purpose": "maskable"
     }
   ],
-  "id": "/crm/"
+  "id": "/crm"
 }
