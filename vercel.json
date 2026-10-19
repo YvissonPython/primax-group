@@ -51,6 +51,10 @@
     {
       "source": "/atendimento/solicitar/manifest.webmanifest",
       "destination": "/facilities/atendimento/solicitar/manifest.webmanifest"
+    },
+    {
+      "source": "/colaborador/manifest.webmanifest",
+      "destination": "/facilities/colaborador/manifest.webmanifest"
     }
   ]
 }
