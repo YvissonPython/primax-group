@@ -376,8 +376,7 @@ async function shareProvider(id,channel){
  if(channel==='whatsapp'&&!/^[1-9][0-9]9[0-9]{8}$/.test(digits)){alert('Cadastre o WhatsApp do colaborador com DDD + 9 dígitos antes de enviar.');return}
  if(!p.email){alert('Cadastre o e-mail do colaborador antes de enviar o convite.');return}
  const portal='https://primaxgroupbr.com/colaborador';
- const introduction='Olá, '+p.name+'! 👋\n\nVocê foi cadastrado(a) na equipe de colaboradores da *Primax Group*.\n\nSeu portal de acesso é: '+portal+'\n\n';
- const pending=introduction+'Seu acesso individual está em preparação. Aguarde o convite de ativação para definir sua senha.\n\n*Equipe Primax Group*';
+ const introduction='Olá, '+p.name+'!\n\nVocê foi cadastrado(a) na equipe de colaboradores da *Primax Group*.\n\nSeu portal de acesso é: '+portal+'\n\n';
  const existing=introduction+'Caso já tenha ativado sua conta, entre com seu e-mail e senha. Se precisar, use a opção *Esqueci minha senha*.\n\n*Equipe Primax Group*';
  const send=(msg)=>{if(channel==='whatsapp'){const url='https://wa.me/55'+digits+'?text='+encodeURIComponent(msg);const opened=window.open(url,'_blank','noopener,noreferrer');if(!opened){window.location.href=url}}else{window.location.href='mailto:'+encodeURIComponent(p.email)+'?subject='+encodeURIComponent('Acesso ao Portal do Colaborador • Primax Group')+'&body='+encodeURIComponent(msg)}};
  if(p.user_id){send(existing);return}
