@@ -26,6 +26,11 @@
       "source": "/app-colaborador",
       "destination": "/colaborador",
       "permanent": false
+    },
+    {
+      "source": "/atendimento",
+      "destination": "/atendimento/solicitar",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -40,10 +45,6 @@
     {
       "source": "/crm",
       "destination": "/facilities/crm"
-    },
-    {
-      "source": "/atendimento",
-      "destination": "/facilities/atendimento"
     },
     {
       "source": "/atendimento/solicitar",
