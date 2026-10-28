@@ -99,6 +99,68 @@
       .cover-slide .hero-art{width:100%;aspect-ratio:16/9;max-height:none;transform:none}
       .cover-slide .hero-copy{max-width:100%}
     }
+    /* Cabeçalho institucional aprovado — composição com marcas oficiais. */
+    .brands{
+      position:relative;display:flex;align-items:center;gap:clamp(10px,1.1vw,17px);
+      min-height:78px;padding:10px 23px 10px 14px;
+      border:1px solid rgba(128,207,255,.78);border-radius:20px;
+      background:linear-gradient(120deg,rgba(12,43,74,.94) 0%,rgba(3,17,36,.96) 48%,rgba(8,35,65,.94) 100%);
+      backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+      box-shadow:inset 0 1px 0 rgba(223,247,255,.27),inset 0 -1px 0 rgba(20,133,245,.23),0 14px 42px #0008,0 0 34px #208af62a;
+      overflow:hidden;transition:box-shadow .3s,border-color .3s;
+    }
+    .brands:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,#83d3ffcc 20%,#1e87e770 55%,transparent);pointer-events:none}
+    .brands:hover{border-color:#a6e1ff;box-shadow:inset 0 1px 0 rgba(223,247,255,.35),0 18px 48px #0009,0 0 40px #208af640}
+    .brands img{flex-shrink:0;object-fit:contain}
+    .brands .ponto{width:70px;height:58px}
+    .brands .brand-divider{display:block;flex:0 0 1px;width:1px;height:48px;background:linear-gradient(180deg,transparent,#63b7f0 18%,#63b7f0 82%,transparent)}
+    .brands .primax-lockup{display:flex;flex-direction:row;align-items:center;gap:10px;font:inherit;letter-spacing:normal;min-width:0}
+    .brands .primax{width:53px;height:53px}
+    .brands .primax-wordmark{display:flex;flex-direction:column;gap:5px;color:#f5faff;white-space:nowrap;letter-spacing:normal}
+    .brands .primax-wordmark strong{font:800 16px/1 Manrope,sans-serif;letter-spacing:.015em}
+    .brands .primax-wordmark b{font-weight:500}
+    .brands .primax-wordmark small{font:600 6.5px/1.1 "DM Sans",sans-serif;letter-spacing:.24em;color:#b7d8ed;margin:0}
+    .brands .brand-proposal{display:flex;flex-direction:column;gap:6px;min-width:0;white-space:nowrap;color:#fff;font:800 clamp(12px,1vw,15px)/1.15 Manrope,sans-serif;letter-spacing:.035em}
+    .brands .brand-proposal small{font:600 9px/1.3 "DM Sans",sans-serif;letter-spacing:.18em;color:#6fbeff;margin:0}
+    @media(min-width:1001px){
+      .cover-slide .content{padding-top:108px}
+      .cover-slide .hero-art{width:min(100%,calc((100dvh - 245px)*16/9))}
+    }
+    @media(max-width:1150px){
+      .top-tools .tool{width:42px;justify-content:center;padding:0}
+      .top-tools .tool span{display:none}
+      .brands{gap:11px;padding-inline:12px 16px}
+      .brands .ponto{width:58px;height:52px}
+      .brands .primax{width:46px;height:46px}
+      .brands .primax-wordmark strong{font-size:14px}
+      .brands .brand-proposal{font-size:12px}
+    }
+    @media(max-width:720px){
+      .brandbar{top:10px;left:10px;right:10px;gap:8px;align-items:center}
+      .brands{flex:1;min-width:0;min-height:52px;padding:6px 10px 6px 7px;gap:7px;border-radius:13px}
+      .brands .ponto{width:40px;height:40px}
+      .brands .brand-divider{height:30px}
+      .brands .primax{width:31px;height:31px}
+      .brands .primax-lockup{gap:0}
+      .brands .primax-wordmark{display:none}
+      .brands .brand-proposal{gap:3px;font-size:clamp(8px,1.7vw,11px);letter-spacing:.02em}
+      .brands .brand-proposal small{font-size:clamp(6px,1.1vw,8px);letter-spacing:.07em}
+      .top-tools{gap:4px}
+      .top-tools .tool{width:36px;height:36px}
+    }
+    @media(max-width:420px){
+      .brands{gap:5px;padding-inline:6px}
+      .brands .ponto{width:33px;height:35px}
+      .brands .primax{width:26px;height:26px}
+      .brands .brand-divider{height:25px}
+      .brands .brand-proposal{font-size:clamp(7px,2.15vw,9px)}
+      .brands .brand-proposal small{font-size:6px;letter-spacing:.02em}
+      .top-tools .tool{width:34px;height:34px}
+    }
+    @media(max-width:350px){
+      .brands .brand-divider-proposal{display:none}
+      .brands .brand-proposal small{display:none}
+    }
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.slide{transform:none!important;filter:none!important}}
     @media print{html,body{overflow:visible;background:#fff;color:#111}.brandbar,.hud,.hint,.slide-bg{display:none!important}#app,#stage{position:static;background:#fff}.slide{position:relative;visibility:visible;opacity:1;pointer-events:auto;transform:none;filter:none;page-break-after:always;min-height:100vh;color:#10243a;background:#fff}.content{width:90%;height:auto;min-height:100vh;padding:50px 0;overflow:visible}.lead,.pillar p,.phase-card ul,.routine-side p{color:#425a70}.pillar,.store,.role,.metric,.chart,.price-card,.routine-card,.phase-card,.included div{background:#f3f7fa;color:#10243a;box-shadow:none}.hero-art{transform:none}.target-number,.big-stat,.price{color:#10243a}}
   </style>
@@ -108,9 +170,13 @@
     <div class="brandbar">
       <a class="brands" href="/" aria-label="Primax Group e Ponto da Carne">
         <img class="ponto" src="/assets/ponto-da-carne/logo.webp" alt="Ponto da Carne">
-        <i aria-hidden="true"></i>
-        <img class="primax" src="/assets/primax-mark.png" alt="Primax Group">
-        <span>PROPOSTA COMERCIAL<small>GESTÃO INTEGRADA · 2026</small></span>
+        <i class="brand-divider" aria-hidden="true"></i>
+        <span class="primax-lockup">
+          <img class="primax" src="/assets/primax-mark.png" alt="Primax Group">
+          <span class="primax-wordmark" aria-hidden="true"><strong>PRIMAX <b>GROUP</b></strong><small>SOLUÇÕES INTEGRADAS</small></span>
+        </span>
+        <i class="brand-divider brand-divider-proposal" aria-hidden="true"></i>
+        <span class="brand-proposal">PROPOSTA COMERCIAL<small>GESTÃO INTEGRADA · 2026</small></span>
       </a>
       <div class="top-tools">
         <button class="tool" id="chapters-open" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg><span>Capítulos</span></button>
