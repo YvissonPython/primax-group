@@ -30,10 +30,6 @@
   ],
   "rewrites": [
     {
-      "source": "/ponto-da-carne/motoboys",
-      "destination": "/ponto-da-carne-motoboys.html"
-    },
-    {
       "source": "/colaborador",
       "destination": "/facilities/colaborador"
     },
