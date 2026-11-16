@@ -27,6 +27,44 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
 .dashboard-preview{display:grid;grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);gap:40px;align-items:center}.preview-frame{padding:19px;border:1px solid #559dc2;border-radius:25px;background:linear-gradient(155deg,#0d3451,#061a2b);box-shadow:0 50px 105px #0009;transform:perspective(1200px) rotateY(-3deg)}.preview-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:800;color:#cfeeff;margin-bottom:17px}.preview-top span{padding:6px 9px;background:#633b21;color:#ffd2a5;border-radius:8px;font-size:9px}.kpis{display:grid;grid-template-columns:1fr 1fr;gap:9px}.fake-kpi{padding:17px;border:1px solid #32607f;border-radius:13px;background:#0a273f}.fake-kpi small{color:#99bdcf;font-size:10px}.fake-kpi b{display:block;font:800 23px Manrope;margin-top:9px}.fake-kpi b i{font:600 9px "DM Sans";color:#83d9ff;font-style:normal}.preview-chart{margin-top:10px;border:1px solid #32607f;border-radius:13px;background:#09253d;padding:17px;height:146px}.fake-bars{display:flex;align-items:end;gap:14px;height:92px;margin-top:9px}.fake-bars i{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(#5ce1ff,#1663b6)}.fake-bars i:nth-child(2n){background:linear-gradient(#2aaedb,#144c88)}.dash-copy .eyebrow{margin-bottom:13px}.dash-copy p{color:#b4cddc;line-height:1.75;font-size:15px;max-width:500px}.dash-copy ul{padding:0;margin:24px 0 30px;list-style:none;display:grid;gap:12px;color:#cae2ed;font-size:13px}.dash-copy li:before{content:"✓";margin-right:11px;color:#69e3d8;font-weight:800}
 .closing{text-align:center;padding:105px 0 120px}.closing h2{max-width:930px;margin:0 auto 23px}.closing p{max-width:675px;margin:0 auto 32px;color:#acc8da;font-size:17px;line-height:1.7}.closing .hero-actions{justify-content:center}.foot{padding:26px 20px;border-top:1px solid #2b526c;color:#7c9fb9;text-align:center;font-size:11px}.foot b{color:#b6d5e8}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+
+/* Antes e depois: comparativo comercial de evolução digital */
+.website-comparison{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.website-panel{background:linear-gradient(150deg,#09233b,#051729);border:1px solid #2c5879;border-radius:22px;padding:20px;min-width:0}
+.website-after{border-color:#4bb4dc;box-shadow:0 0 40px #1584c327}
+.website-panel-heading{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.website-panel-heading h3{font:800 18px Manrope;margin:0 0 5px}
+.website-panel-heading small{font-size:10px;color:#a3bed1}
+.website-marker{font:800 10px Manrope;letter-spacing:.1em;border-radius:9px;padding:9px 11px}
+.website-marker.old{color:#b9d0db;background:#173448;border:1px solid #31516a}
+.website-marker.new{color:#acf0e5;background:#0c524f;border:1px solid #238e85}
+.browser{border:1px solid #376586;border-radius:14px;overflow:hidden;aspect-ratio:1.6;min-height:250px;box-shadow:0 12px 45px #0007;background:#061b2f}
+.browserbar{display:flex;align-items:center;gap:13px;padding:10px 12px;background:#051322;border-bottom:1px solid #1f415b}
+.browserdots{display:flex;gap:4px}.browserdots i{width:6px;height:6px;border:1px solid #526c7d;border-radius:50%}
+.browserurl{font:700 8px "DM Sans";letter-spacing:.12em;color:#7c9bb0}
+.browserbody{height:calc(100% - 35px);min-height:216px}
+.oldbody{background:linear-gradient(#f0f2f4,#d7e0e6);color:#163b57;padding:12px}
+.oldnav{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#12467a;color:white;padding:11px;border-radius:4px;font-size:9px}
+.oldnav span{font-size:7px}
+.oldmain{display:grid;grid-template-columns:1.05fr .95fr;gap:10px;padding:12px 0}
+.old-illustration{min-height:121px;background:linear-gradient(130deg,#2866a0,#124069);display:flex;flex-direction:column;justify-content:center;gap:7px;padding:14px;color:white}
+.old-illustration span{font-size:7px;letter-spacing:.1em}.old-illustration b{font:800 clamp(12px,1.5vw,20px) Manrope}.old-illustration small{font-size:9px;color:#d0e2ef}
+.old-copy{display:grid;align-content:center;gap:8px}.old-copy span{display:block;height:8px;border-radius:4px;background:#a2b5c3}.old-copy span:nth-child(2){width:79%}.old-copy span:nth-child(3){width:64%}
+.oldtiles{display:flex;gap:7px}.oldtiles span{background:#fff;border:1px solid #c1cfdb;padding:11px 8px;flex:1;font-size:8px;text-align:center;font-weight:800}
+.newbody{background:linear-gradient(145deg,#07172b,#0a3658 76%);padding:12px}
+.newnav{display:flex;align-items:center;gap:8px;min-width:0;font-size:8px}.newnav b{flex:1;white-space:nowrap;font-size:clamp(7px,.8vw,11px)}
+.ec-monogram{width:24px;height:24px;border:1px solid #4dc5ff;border-radius:50%;background:#145a93;display:grid;place-items:center;font:800 9px Manrope;flex-shrink:0}
+.newnav-cta{background:#0d78ad;border:1px solid #3ba7df;border-radius:6px;padding:7px;color:white;white-space:nowrap;font-size:7px;font-weight:800}
+.newhero{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:4px;padding:18px 8px 10px}.newhero div{display:grid;justify-items:start;gap:8px}.newhero small{font-size:8px;color:#8de3ff;font-weight:800}.newhero b{font:800 clamp(14px,1.8vw,23px)/1.14 Manrope;letter-spacing:-.04em}.newhero p{font-size:9px;line-height:1.4;color:#b6d5e8;margin:0}.newhero div>span{font-size:8px;background:#1076b4;border-radius:6px;padding:8px 9px;font-weight:800}.newmeat{font-size:clamp(65px,7vw,110px);text-align:center;filter:drop-shadow(0 8px 20px #0008)}
+.newtiles{display:flex;gap:5px}.newtiles span{flex:1;text-align:center;border:1px solid #2e6b90;border-radius:6px;background:#0d3c60;padding:10px 3px;font-weight:800;font-size:8px}
+.website-panel-note{color:#a7c2d4;font-size:12px;line-height:1.6;margin:16px 2px 0;min-height:58px}
+.comparison-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:17px}
+.comparison-benefits div{display:flex;align-items:center;gap:12px;border:1px solid #2e5c7b;padding:15px;border-radius:13px;background:#0b2c46}
+.comparison-benefits strong{color:#74dafa;font:800 19px Manrope}.comparison-benefits span{font-size:11px;line-height:1.5;color:#b4d0e0}
+.comparison-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:24px}.comparison-actions p{font-size:11px;color:#a8c3d5;margin:0;max-width:370px;line-height:1.5}
+@media(max-width:900px){.website-comparison{grid-template-columns:1fr}.browser{aspect-ratio:1.6}.comparison-benefits{grid-template-columns:1fr}}
+@media(max-width:580px){.website-panel{padding:12px}.browser{min-height:225px;aspect-ratio:1.32}.browserbody{min-height:190px}.newhero b{font-size:16px}.newmeat{font-size:66px}.old-illustration b{font-size:15px}.comparison-actions .btn{width:100%;justify-content:center}}
+
 @media(max-width:1180px){.navlinks{gap:14px}.hero-grid{grid-template-columns:1fr 1fr;gap:35px}.pain-grid{grid-template-columns:repeat(3,1fr)}.pillars{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:850px){.navlinks{display:none}.hero{min-height:auto;padding:145px 0 65px}.hero-grid{grid-template-columns:1fr}.scene{min-height:0;padding:25px 0 5px}.glass{transform:none}.scene-badge{right:4px}.dashboard-preview{grid-template-columns:1fr}.preview-frame{transform:none}.pain-grid{grid-template-columns:repeat(2,1fr)}.section{padding:75px 0}}
 @media(max-width:590px){.container{width:calc(100% - 30px)}nav.site{padding:11px 14px}.brand img{width:34px;height:34px}.brand-main{font-size:10px}.brand-sub{font-size:8px}.navcta{padding:10px 11px;font-size:9px}.hero{padding:115px 0 40px}h1{font-size:clamp(38px,10vw,54px)}.intro{font-size:15px}.hero-actions .btn{flex:1;min-width:100%;padding:14px}.scene{padding-bottom:0}.glass{padding:18px;border-radius:19px}.scene h3{font-size:25px}.unit{padding:13px}.unit b{font-size:16px}.scene-badge{right:4px;bottom:-17px}.section{padding:64px 0}.section-head{margin-bottom:26px}h2{font-size:clamp(30px,9vw,43px)}.pain-grid,.compare,.pillars,.flow{grid-template-columns:1fr}.pain{min-height:auto;padding:19px}.pain .id{font-size:24px}.pain h3{margin:10px 0 8px}.quote{padding:24px;font-size:17px}.compare-card{padding:23px}.pillar{min-height:265px}.dashboard-preview{gap:26px}.preview-frame{padding:12px}.fake-kpi{padding:12px}.fake-kpi b{font-size:19px}.closing{padding:76px 0 90px}.closing p{font-size:15px}}
@@ -40,7 +78,7 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
   <img src="/assets/primax-mark.png" alt="Símbolo Primax Group" width="40" height="40">
   <div><div class="brand-main">ESQUINA DA CARNE × PRIMAX</div><div class="brand-sub">PROJETO ESTRATÉGICO · 2026</div></div>
  </a>
- <div class="navlinks"><a href="#diagnostico">Diagnóstico</a><a href="#metodo">Método</a><a href="#painel">Painel do Neto</a><a href="#plano">Plano 90 dias</a></div>
+ <div class="navlinks"><a href="#diagnostico">Diagnóstico</a><a href="#metodo">Método</a><a href="#antes-depois">Antes e depois</a><a href="#painel">Painel do Neto</a><a href="#plano">Plano 90 dias</a></div>
  <a class="navcta" href="/esquina-da-carne/painel">EXPLORAR PAINEL ↗</a>
 </nav>
 <main>
@@ -109,10 +147,51 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
   </div>
  </div>
 </section>
+<section class="section alt" id="antes-depois">
+ <div class="container">
+  <div class="section-head reveal">
+   <span class="num">05 / EVOLUÇÃO DIGITAL</span>
+   <h2>Do site informativo a uma <em>experiência preparada para vender.</em></h2>
+   <p>Uma nova proposta digital para que o cliente descubra os produtos, identifique sua unidade e avance para um atendimento mais organizado pelo Meatz.</p>
+  </div>
+  <div class="website-comparison reveal" aria-label="Comparação entre o modelo atual e o conceito de novo site">
+   <article class="website-panel website-before">
+    <div class="website-panel-heading"><span class="website-marker old">ANTES</span><div><h3>Experiência atual</h3><small>Representação esquemática, não reprodução da captura enviada</small></div></div>
+    <div class="browser browser-old">
+     <div class="browserbar"><span class="browserdots"><i></i><i></i><i></i></span><span class="browserurl">SITE ATUAL · REFERÊNCIA VISUAL</span></div>
+     <div class="browserbody oldbody">
+      <div class="oldnav"><strong>ESQUINA DA CARNE</strong><span>INÍCIO &nbsp; • &nbsp; CONTATO</span></div>
+      <div class="oldmain"><div class="old-illustration"><span>INFORMAÇÕES</span><b>ESQUINA DA CARNE</b><small>Vitrine digital</small></div><div class="old-copy"><span></span><span></span><span></span></div></div>
+      <div class="oldtiles"><span>CONHEÇA A LOJA</span><span>FALE CONOSCO</span></div>
+     </div>
+    </div>
+    <p class="website-panel-note">Referência de uma navegação mais institucional. Oportunidade de trazer produtos, unidades e fluxo de atendimento para o primeiro plano.</p>
+   </article>
+   <article class="website-panel website-after">
+    <div class="website-panel-heading"><span class="website-marker new">DEPOIS</span><div><h3>Nova experiência proposta</h3><small>Conceito visual e funcional a validar</small></div></div>
+    <div class="browser browser-new">
+     <div class="browserbar"><span class="browserdots"><i></i><i></i><i></i></span><span class="browserurl">ESQUINA DA CARNE · CONCEITO</span></div>
+     <div class="browserbody newbody">
+      <div class="newnav"><span class="ec-monogram">EC</span><b>ESQUINA DA CARNE</b><span class="newnav-cta">PEDIR PELO MEATZ ↗</span></div>
+      <div class="newhero"><div><small>QUALIDADE E PRATICIDADE</small><b>O corte certo para cada ocasião.</b><p>Uma jornada de compra mais simples e organizada.</p><span>CONHECER CATEGORIAS ↗</span></div><span class="newmeat" aria-hidden="true">🥩</span></div>
+      <div class="newtiles"><span>🥩 CHURRASCO</span><span>🍖 DIA A DIA</span><span>🧺 COMBOS</span></div>
+     </div>
+    </div>
+    <p class="website-panel-note">O cliente conhece o catálogo, escolhe a unidade e inicia a jornada Meatz, com etapas de conferência e acompanhamento.</p>
+   </article>
+  </div>
+  <div class="comparison-benefits reveal">
+   <div><strong>01</strong><span>Jornada por categoria, não apenas informação institucional</span></div>
+   <div><strong>02</strong><span>Atalaia e Hermes Fontes em uma experiência unificada</span></div>
+   <div><strong>03</strong><span>Meatz como porta de entrada para atendimento e conversão</span></div>
+  </div>
+  <div class="comparison-actions reveal"><a class="btn" href="/esquina-da-carne/site">EXPLORAR CONCEITO DO NOVO SITE ↗</a><p>Protótipo demonstrativo. Nenhuma alteração foi feita no site atual da Esquina da Carne.</p></div>
+ </div>
+</section>
 <section class="section alt" id="painel">
  <div class="container dashboard-preview">
   <div class="dash-copy reveal">
-   <div class="eyebrow">05 / GOVERNANÇA VISÍVEL</div>
+   <div class="eyebrow">06 / GOVERNANÇA VISÍVEL</div>
    <h2>O <em>Painel do Neto.</em></h2>
    <p>Um protótipo para mostrar como o proprietário poderá acompanhar as unidades sem precisar perguntar a cada funcionário o que aconteceu.</p>
    <ul><li>Visão integrada das duas unidades</li><li>Faltas, treinamento e padrões operacionais</li><li>Pedidos, ticket médio e qualidade do delivery</li><li>Índice de independência operacional</li><li>Ocorrências e plano de ação</li></ul>
@@ -128,13 +207,13 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
 </section>
 <section class="section" id="plano">
  <div class="container">
-  <div class="section-head reveal"><span class="num">06 / CAMINHO DE IMPLANTAÇÃO</span><h2>Um plano de <em>90 dias.</em></h2><p>Primeiro entender a operação, depois implantar as rotinas e, por fim, acompanhar o desempenho com indicadores. Escopo e metas serão validados com Neto.</p></div>
+  <div class="section-head reveal"><span class="num">07 / CAMINHO DE IMPLANTAÇÃO</span><h2>Um plano de <em>90 dias.</em></h2><p>Primeiro entender a operação, depois implantar as rotinas e, por fim, acompanhar o desempenho com indicadores. Escopo e metas serão validados com Neto.</p></div>
   <div class="flow"><div class="flow-item reveal"><div class="step">01–30</div><h3>Diagnóstico</h3><p>Mapeamento das equipes, escalas, ocorrências, processos, atendimento e linha de base dos indicadores.</p></div><div class="flow-item reveal"><div class="step">31–60</div><h3>Implantação</h3><p>Rotinas de governança, capacitação, padrões operacionais e estruturação do atendimento Meatz.</p></div><div class="flow-item reveal"><div class="step">61–90</div><h3>Performance</h3><p>Acompanhamento gerencial, revisão de indicadores, correções e consolidação do modelo.</p></div></div>
  </div>
 </section>
 <section class="section alt closing" id="proximo">
  <div class="container reveal">
-  <span class="num">07 / O PRÓXIMO PASSO</span>
+  <span class="num">08 / O PRÓXIMO PASSO</span>
   <h2>O próximo crescimento começa quando <em>tudo deixa de depender do dono.</em></h2>
   <p>Neto, a proposta não é tirar você do controle. É colocar pessoas, processos e indicadores sob controle para que seu tempo seja dedicado ao futuro da Esquina da Carne.</p>
   <div class="hero-actions"><a class="btn" href="/esquina-da-carne/painel">CONHECER O PAINEL DO NETO ↗</a><a class="btn secondary" href="#inicio">REVER APRESENTAÇÃO ↑</a></div>
