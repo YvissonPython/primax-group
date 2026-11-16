@@ -42,6 +42,8 @@
 .customer-photo span{position:absolute;left:15px;bottom:15px;padding:10px 13px;background:#041c31e6;color:#bce8f8;border-radius:9px;font-size:11px;font-weight:700}
 @media(max-width:850px){.customer-grid{grid-template-columns:1fr}.customer-photo{min-height:350px}}
 @media(max-width:580px){.customer-photo{min-height:260px}.unit-photo{height:190px}}
+.brand img.mark{object-fit:contain;border:0;background:transparent;box-shadow:none}
+@media(max-width:580px){.brand img.mark{height:38px;width:38px}}
 @media(max-width:1100px){header{padding:12px 20px}.nav{gap:11px}.nav a{font-size:11px}}
 @media(max-width:850px){.nav{display:none}.herogrid,.split{grid-template-columns:1fr}.hero{padding:75px 0}.hero-art{min-height:350px}.artbox{transform:none;max-width:550px}.cards{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:580px){header{padding:10px 13px}.mark{height:38px;width:38px;font-size:14px}.brand strong{font-size:11px}.brand small{font-size:8px}.topcta{padding:10px 10px;font-size:10px}.container{width:calc(100% - 30px)}.hero{padding:58px 0 40px}.hero h1{font-size:clamp(35px,10.4vw,50px)}.hero-art{min-height:300px}.artbox{height:300px;aspect-ratio:auto}.product-art .beef{font-size:135px}.section{padding:55px 0}.section-header{align-items:start;flex-direction:column}.cards,.units{grid-template-columns:1fr}.cut-art{height:180px}.split{gap:17px}.meatz{padding:24px}.end{padding:70px 0}.end h2{font-size:34px}.buttons{display:grid}.buttons .btn{width:100%}.dialog{padding:20px}}
@@ -50,7 +52,7 @@
 </head>
 <body>
 <header>
- <a href="#inicio" class="brand" aria-label="Esquina da Carne início"><span class="mark" aria-hidden="true">EC</span><span><strong>ESQUINA DA CARNE</strong><small>A MELHOR CARNE, COM O MELHOR PREÇO</small></span></a>
+ <a href="#inicio" class="brand" aria-label="Esquina da Carne início"><img class="mark" src="/assets/esquina-da-carne/logo.webp" alt="Esquina da Carne" width="46" height="46"><span><strong>ESQUINA DA CARNE</strong><small>A MELHOR CARNE, COM O MELHOR PREÇO</small></span></a>
  <nav class="nav" aria-label="Menu principal"><a href="#categorias">Cortes</a><a href="#experiencia">Experiência</a><a href="#meatz">Delivery</a><a href="#lojas">Nossas unidades</a></nav>
  <button class="topcta" id="open-order">FAZER PEDIDO ↗</button>
 </header>
