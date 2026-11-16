@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06162b">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Protótipo interativo do Painel do Neto, com indicadores simulados de governança e operação da Esquina da Carne.">
+<title>Painel do Neto | Esquina da Carne × Primax Group</title>
+<link rel="icon" href="/assets/primax-icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--navy:#041222;--navy2:#061a30;--panel:#0b2138;--panel2:#0d2a44;--edge:#244765;--cyan:#50d3ff;--blue:#278dfa;--orange:#ff9c5a;--green:#4bddb2;--white:#f4f9ff;--muted:#8faec4;--red:#ff8a8b;--shadow:0 22px 65px rgba(0,4,16,.26)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -20%,#15436a 0,transparent 39%),#041222;color:var(--white);font-family:"DM Sans",sans-serif;font-size:14px}button,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif}h2{font-size:clamp(19px,2vw,25px);letter-spacing:-.035em;margin:0}.eyebrow{font-size:10px;font-weight:800;letter-spacing:.16em;color:var(--cyan);text-transform:uppercase}small,.muted{color:var(--muted)}
+.app{display:grid;grid-template-columns:246px minmax(0,1fr);min-height:100dvh}.sidebar{position:sticky;top:0;height:100dvh;padding:25px 18px;border-right:1px solid #1b3b55;background:linear-gradient(180deg,#071b30,#04111f);display:flex;flex-direction:column;gap:34px;z-index:8}.brand{display:flex;align-items:center;gap:12px}.brand img{width:45px;height:45px;object-fit:contain}.brand b{font:800 15px Manrope}.brand small{display:block;font-size:9px;letter-spacing:.08em;margin-top:4px}.nav{display:grid;gap:8px}.nav a{display:flex;align-items:center;gap:12px;border:1px solid transparent;border-radius:12px;padding:13px 15px;color:#b4cadd;font-weight:700;transition:.2s}.nav a:hover,.nav a.active{background:#0b314c;border-color:#245e81;color:white}.nav i{width:8px;height:8px;border:2px solid #68caff;border-radius:50%}.sidefoot{margin-top:auto;display:grid;gap:14px}.sidefoot .micro{font-size:11px;line-height:1.6;color:#a4bfd1}.sidefoot a{color:#7fd9ff;font-weight:700;font-size:11px}
+.main{min-width:0;padding:clamp(18px,3vw,40px) clamp(16px,3.3vw,48px) 70px;max-width:1740px;width:100%;margin:0 auto}.top{display:flex;align-items:center;gap:16px;justify-content:space-between;margin-bottom:22px}.top-title h1{font:800 clamp(25px,3.5vw,38px)/1.15 Manrope;letter-spacing:-.05em;margin:4px 0 6px}.top-title p{margin:0;color:var(--muted)}.avatar{width:43px;height:43px;display:grid;place-items:center;background:#11436b;border:1px solid #467ba0;border-radius:15px;font-weight:800;color:#d6f4ff}.demo{display:flex;align-items:center;gap:10px;background:rgba(250,170,79,.07);border:1px solid #8f663c;border-radius:14px;padding:12px 15px;color:#f9d2a7;margin:0 0 23px;font-size:12px;line-height:1.5}.demo strong{color:#ffe2ba}.demo .dot{flex:0 0 8px;width:8px;height:8px;background:#ffb067;border-radius:50%}
+.filters{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px}.chipset{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid #284f6c;color:#a9c4d7;background:#0a233a;border-radius:11px;padding:10px 14px;font-size:12px;font-weight:800;transition:.2s}.chip.active{background:#1373ac;border-color:#49c8ff;color:#fff;box-shadow:0 0 22px #19b8fe22}.secondary{border:1px solid #345c79;background:#0c2b46;color:#caeaff;border-radius:11px;padding:10px 14px;font-size:12px;font-weight:800}.secondary:hover{background:#15426a}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.stat,.card{border:1px solid var(--edge);border-radius:19px;background:linear-gradient(150deg,rgba(12,43,68,.95),rgba(6,24,41,.98));box-shadow:var(--shadow)}.stat{padding:20px;min-height:155px;position:relative;overflow:hidden}.stat:after{content:"";position:absolute;width:115px;height:115px;right:-55px;top:-68px;border:1px solid #50b7e62e;border-radius:50%}.stat .label{font-size:12px;color:#a3bdd0;font-weight:700}.stat .value{font:800 clamp(25px,3vw,37px)/1.17 Manrope;letter-spacing:-.04em;margin:13px 0 8px}.stat .desc{color:#7ec5df;font-size:11px;line-height:1.4}.stat.mainstat{background:linear-gradient(140deg,#10426a,#08253f);border-color:#397aa0}.stat .tag{display:inline-block;margin-top:2px;font-size:10px;font-weight:800;padding:5px 8px;border-radius:8px;background:#0e3e5a;color:#7ce5df}
+.section{scroll-margin-top:28px;margin-top:27px}.section-head{display:flex;justify-content:space-between;gap:15px;align-items:end;margin-bottom:14px}.section-head p{margin:5px 0 0;color:#92afc4;font-size:12px;line-height:1.5}.section-head a{color:var(--cyan);font-weight:700;font-size:12px}
+.two{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(275px,1fr);gap:14px}.card{padding:21px}.card-title{font:800 15px Manrope;margin:0 0 5px}.card-sub{font-size:11px;color:var(--muted);margin:0 0 20px}.bargraph{height:166px;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));align-items:end;gap:12px;border-bottom:1px solid #25506b;padding:0 0 5px}.barcol{height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:6px}.barcol .bar{width:min(100%,33px);height:var(--h);background:linear-gradient(180deg,#59ddff,#1766b4);border:1px solid #6cddff7a;border-radius:9px 9px 3px 3px;transition:height .45s}.barcol:nth-child(2n) .bar{background:linear-gradient(180deg,#38b9f2,#164e9c)}.barcol small{font-size:10px;white-space:nowrap;color:#9fbace}.barcol b{font-size:9px;color:#e2f7ff;min-height:13px}.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;font-size:11px;color:#b6cee1}.legend span:before{content:"";display:inline-block;width:7px;height:7px;background:#48cafa;border-radius:3px;margin-right:6px}
+.ringrow{display:flex;align-items:center;gap:18px;margin-top:13px}.ring{flex:0 0 125px;width:125px;height:125px;display:grid;place-items:center;border-radius:50%;background:conic-gradient(#52dce2 calc(var(--p)*1%),#17405a 0);box-shadow:0 0 40px #1e9bb02c;position:relative}.ring:before{position:absolute;content:"";inset:13px;border-radius:50%;background:#082236}.ring strong{position:relative;text-align:center;font:800 31px Manrope}.ring strong small{font-size:11px;display:block;font-weight:600}.ring-copy p{color:#b5cada;line-height:1.65;font-size:12px;margin:0 0 12px}.ring-copy b{color:#7ceae8;font-size:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.progressrow{margin-top:18px}.progressmeta{display:flex;justify-content:space-between;gap:8px;color:#b9d1e1;font-size:12px;margin-bottom:10px}.progressmeta b{color:#e3f8ff}.track{height:9px;background:#113b56;border:1px solid #215875;border-radius:12px;overflow:hidden}.fill{height:100%;width:var(--w);background:linear-gradient(90deg,#1285d1,#5ce0fe);border-radius:12px;transition:width .35s}.fill.green{background:linear-gradient(90deg,#128c88,#49e0b0)}.fill.orange{background:linear-gradient(90deg,#bb6929,#ffbb6c)}
+.branch-list{display:grid;gap:11px}.branch{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:14px;border:1px solid #25516f;border-radius:13px;background:#071e32}.branch b{font:800 14px Manrope}.branch span{display:block;color:#8eb0c6;font-size:11px;margin-top:6px}.branch .count{font:800 22px Manrope;color:#61d9ff;text-align:right}
+.incident-list{display:grid;gap:9px}.incident{border:1px solid #29506e;border-radius:13px;background:#092338;padding:13px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}.incident b{font-size:12px;line-height:1.35}.incident small{display:block;font-size:11px;margin-top:6px}.priority{font-size:10px;font-weight:800;padding:6px 8px;border-radius:8px;background:#55352d;color:#ffc79f}.priority.med{background:#244961;color:#91d3ff}.priority.ok{background:#1d4b45;color:#83e8c7}.incident button{border:1px solid #356885;border-radius:9px;background:#10354e;color:#d5edfa;padding:8px 10px;font-size:10px;font-weight:800}.incident button.done{background:#184d40;color:#9cf1d0;border-color:#358b73}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.roaditem{padding:20px;border-radius:17px;background:#0b263c;border:1px solid #244c67}.roaditem .number{color:#50d1ff;font:800 28px Manrope}.roaditem h3{margin:12px 0 7px;font-size:15px}.roaditem p{margin:0;font-size:12px;color:#a8c2d5;line-height:1.6}.note{font-size:11px;color:#789cb4;line-height:1.5;margin-top:12px}.footer{font-size:11px;color:#779ab2;margin-top:34px;padding-top:20px;border-top:1px solid #1f405b}
+.bottomnav{display:none}.toast{position:fixed;bottom:22px;right:24px;background:#104462;border:1px solid #5cd0e8;border-radius:13px;padding:13px 17px;color:#fff;box-shadow:0 20px 60px #000b;z-index:40;opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:1170px){.app{grid-template-columns:205px 1fr}.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(2,1fr)}.grid3 .card:last-child{grid-column:span 2}}
+@media(max-width:920px){.app{display:block}.sidebar{display:none}.main{padding:25px 16px 105px}.bottomnav{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;z-index:20;bottom:0;left:0;right:0;padding:8px 8px max(10px,env(safe-area-inset-bottom));background:#061c30f7;border-top:1px solid #396487;backdrop-filter:blur(18px)}.bottomnav a{display:grid;place-items:center;gap:4px;padding:8px 2px;color:#9bbbd1;font-size:10px;font-weight:700}.bottomnav a.active{color:#66dcff}.bottomnav .navico{font-size:19px}.toast{bottom:90px;right:12px;left:12px;text-align:center}.two{grid-template-columns:1fr}}
+@media(max-width:600px){.top-title h1{font-size:29px}.top-title p{font-size:12px}.demo{align-items:flex-start;font-size:11px}.filters{align-items:flex-start}.chip{padding:10px 12px;font-size:11px}.stats{gap:9px}.stat{min-height:140px;padding:14px}.stat .label{font-size:11px}.stat .value{font-size:clamp(22px,6vw,28px)}.stat .desc{font-size:10px}.card{padding:16px}.ringrow{flex-direction:column;align-items:flex-start}.grid3{grid-template-columns:1fr}.grid3 .card:last-child{grid-column:auto}.road{grid-template-columns:1fr}.branch{padding:12px}.bargraph{gap:7px}.barcol small{font-size:9px}.barcol b{font-size:8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="app">
+ <aside class="sidebar">
+  <div class="brand"><img src="/assets/primax-mark.png" alt="Primax Group"><div><b>Painel do Neto</b><small>ESQUINA DA CARNE</small></div></div>
+  <nav class="nav" aria-label="Áreas do painel">
+   <a class="active" href="#visao"><i></i>Visão geral</a><a href="#governanca"><i></i>Governança</a><a href="#equipes"><i></i>Equipes e operação</a><a href="#delivery"><i></i>Meatz • Delivery</a><a href="#acoes"><i></i>Plano de ação</a>
+  </nav>
+  <div class="sidefoot"><p class="micro">Menos decisões operacionais na mão do proprietário. Mais visibilidade para crescer.</p><a href="/esquina-da-carne">← Voltar à apresentação</a></div>
+ </aside>
+ <main class="main" id="visao">
+  <header class="top">
+   <div class="top-title"><div class="eyebrow">Governança & crescimento • Primax + Meatz</div><h1>Bom dia, Neto <span aria-hidden="true">✳</span></h1><p>O que precisa da sua atenção, sem levar o trabalho para casa.</p></div><div class="avatar" aria-label="Perfil demonstrativo">N</div>
+  </header>
+  <div class="demo"><span class="dot"></span><span><strong>Protótipo demonstrativo.</strong> Todos os valores, percentuais, ocorrências e gráficos são fictícios. Não há integração com sistemas reais.</span></div>
+  <section class="filters" aria-label="Filtros de demonstração">
+   <div class="chipset" aria-label="Unidades"><button class="chip active" data-unit="all" aria-pressed="true">Duas unidades</button><button class="chip" data-unit="atalaia" aria-pressed="false">Atalaia</button><button class="chip" data-unit="hermes" aria-pressed="false">Hermes Fontes</button></div>
+   <div class="chipset" aria-label="Período"><button class="chip" data-period="7" aria-pressed="false">7 dias</button><button class="chip active" data-period="30" aria-pressed="true">30 dias</button><button class="chip" data-period="90" aria-pressed="false">90 dias</button></div>
+  </section>
+  <section class="stats" aria-label="Indicadores principais">
+   <div class="stat mainstat"><div class="label">Índice de autonomia operacional</div><div class="value" id="stat-autonomia">79%</div><div class="desc">Ocorrências resolvidas sem acionar o Neto</div><div class="tag">Meta a definir no diagnóstico</div></div>
+   <div class="stat"><div class="label">Pedidos pelo delivery</div><div class="value" id="stat-pedidos">830</div><div class="desc">Pedidos no período selecionado</div></div>
+   <div class="stat"><div class="label">Receita delivery</div><div class="value" id="stat-receita">R$ 70,8 mil</div><div class="desc">Receita fictícia do canal Meatz</div></div>
+   <div class="stat"><div class="label">Pedidos com erro</div><div class="value" id="stat-erros">17</div><div class="desc">Ocorrências registradas para correção</div></div>
+  </section>
+  <section class="section" id="governanca">
+   <header class="section-head"><div><h2>Controle sem microgerenciar</h2><p>Neto visualiza exceções e decisões relevantes em um só lugar.</p></div></header>
+   <div class="two">
+    <article class="card"><h3 class="card-title">Evolução dos pedidos de delivery</h3><p class="card-sub">Distribuição simulada por intervalo · <span id="period-label">30 dias</span></p><div class="bargraph" id="graph" role="img" aria-label="Gráfico demonstrativo de pedidos de delivery"></div><div class="legend"><span>Pedidos processados</span><span>Atalaia + Hermes Fontes</span></div></article>
+    <article class="card"><h3 class="card-title">Independência operacional</h3><p class="card-sub">O indicador que mede a dependência do proprietário</p><div class="ringrow"><div class="ring" id="ring" style="--p:79"><strong id="ring-number">79%<small>autonomia</small></strong></div><div class="ring-copy"><p>Proporção de ocorrências tratadas pelos responsáveis das unidades, sem precisar escalar ao Neto.</p><b id="ring-detail">59 de 75 casos resolvidos</b></div></div><p class="note">Fórmula: ocorrências resolvidas sem intervenção do proprietário ÷ total de ocorrências.</p></article>
+   </div>
+  </section>
+  <section class="section" id="equipes">
+   <header class="section-head"><div><h2>Pessoas e operação</h2><p>Acompanhar padrões, faltas e capacitação por unidade.</p></div></header>
+   <div class="grid3">
+    <article class="card"><h3 class="card-title">Disciplina operacional</h3><p class="card-sub">Acompanhamento dos processos no período</p><div class="progressrow"><div class="progressmeta"><span>Limpeza e higiene</span><b id="clean-label">95%</b></div><div class="track"><div class="fill green" id="clean-bar" style="--w:95%"></div></div></div><div class="progressrow"><div class="progressmeta"><span>Treinamentos concluídos</span><b id="training-label">79%</b></div><div class="track"><div class="fill" id="training-bar" style="--w:79%"></div></div></div><div class="progressrow"><div class="progressmeta"><span>Pedidos sem erro</span><b id="accuracy-label">98%</b></div><div class="track"><div class="fill orange" id="accuracy-bar" style="--w:98%"></div></div></div></article>
+    <article class="card"><h3 class="card-title">Unidades monitoradas</h3><p class="card-sub">Comparativo operacional demonstrativo</p><div class="branch-list" id="branches"></div></article>
+    <article class="card"><h3 class="card-title">Faltas registradas</h3><p class="card-sub">Ausências no período selecionado</p><div style="font:800 53px Manrope;letter-spacing:-.07em;color:#ffb57e;margin:19px 0 10px" id="absences">6</div><p style="color:#b9cede;font-size:12px;line-height:1.65;margin:0">O objetivo é prever cobertura de escala e impedir que cada falta se transforme em uma emergência para Neto.</p></article>
+   </div>
+  </section>
+  <section class="section" id="delivery">
+   <header class="section-head"><div><h2>Meatz • Atendimento Delivery</h2><p>Atendimento que gera receita, com medição de qualidade e recompra.</p></div></header>
+   <div class="grid3">
+    <article class="card"><p class="card-sub">Ticket médio dos pedidos</p><div style="font:800 35px Manrope;margin:0 0 8px" id="ticket">R$ 85,25</div><div class="eyebrow">Dado ilustrativo</div></article>
+    <article class="card"><p class="card-sub">Pedidos atendidos no prazo</p><div style="font:800 35px Manrope;margin:0 0 8px;color:#73e4d0" id="ontime">92%</div><div class="eyebrow">Qualidade do canal</div></article>
+    <article class="card"><p class="card-sub">Recompra estimada</p><div style="font:800 35px Manrope;margin:0 0 8px;color:#7bd5ff" id="repurchase">25%</div><div class="eyebrow">Acompanhamento comercial</div></article>
+   </div>
+  </section>
+  <section class="section" id="acoes">
+   <header class="section-head"><div><h2>O que precisa de atenção</h2><p>Exemplos de ocorrências para priorizar e acompanhar.</p></div><button id="reset" class="secondary" type="button">Reiniciar demonstração</button></header>
+   <article class="card"><div class="incident-list" id="incidents"></div><p class="note">Marcar acompanhamento altera apenas o protótipo desta página; não cria tarefas reais.</p></article>
+  </section>
+  <section class="section">
+   <header class="section-head"><div><h2>90 dias para reduzir a dependência</h2><p>Uma estrutura de implantação com entregáveis a validar no diagnóstico.</p></div></header>
+   <div class="road"><div class="roaditem"><div class="number">01—30</div><h3>Diagnóstico</h3><p>Mapear faltas, retrabalho, atendimento, responsabilidades e processos atuais.</p></div><div class="roaditem"><div class="number">31—60</div><h3>Implantação</h3><p>Estruturar rotinas de governança, treinamento, limpeza e fluxos do delivery.</p></div><div class="roaditem"><div class="number">61—90</div><h3>Performance</h3><p>Acompanhar resultados, corrigir desvios e preparar uma rotina de gestão sustentável.</p></div></div>
+  </section>
+  <footer class="footer">Esquina da Carne × Primax Group × Meatz • Protótipo ilustrativo, sem dados reais ou integração. <a href="/esquina-da-carne" style="color:#82dafa">Voltar à apresentação</a></footer>
+ </main>
+</div>
+<nav class="bottomnav" aria-label="Navegação móvel"><a class="active" href="#visao"><span class="navico">◈</span>Visão</a><a href="#equipes"><span class="navico">♧</span>Equipes</a><a href="#delivery"><span class="navico">↗</span>Delivery</a><a href="#acoes"><span class="navico">☷</span>Ações</a></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+ "use strict";
+ var sources={
+  atalaia:{name:"Atalaia",orders:460,revenue:38940,errors:10,absences:4,resolved:31,cases:40,clean:94,training:76,ontime:91,repurchase:22},
+  hermes:{name:"Hermes Fontes",orders:370,revenue:31820,errors:7,absences:2,resolved:28,cases:35,clean:96,training:82,ontime:93,repurchase:28}
+ };
+ var selectedUnit="all",selectedPeriod=30;
+ var BRL=new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});
+ var integer=new Intl.NumberFormat("pt-BR");
+ var compact=new Intl.NumberFormat("pt-BR",{notation:"compact",maximumFractionDigits:1});
+ var formatPercent=function(n){return Math.round(n)+"%"};
+ function el(id){return document.getElementById(id)}
+ function scale(){return selectedPeriod===7?0.24:selectedPeriod===90?2.66:1}
+ function choose(){return selectedUnit==="all"?[sources.atalaia,sources.hermes]:[sources[selectedUnit]]}
+ function calc(){
+  var items=choose(),f=scale(),tot={orders:0,revenue:0,errors:0,absences:0,resolved:0,cases:0,clean:0,training:0,ontime:0,repurchase:0};
+  items.forEach(function(x){tot.orders+=x.orders;tot.revenue+=x.revenue;tot.errors+=x.errors;tot.absences+=x.absences;tot.resolved+=x.resolved;tot.cases+=x.cases;tot.clean+=x.clean;tot.training+=x.training;tot.ontime+=x.ontime;tot.repurchase+=x.repurchase});
+  tot.orders=Math.round(tot.orders*f);tot.revenue=Math.round(tot.revenue*f);tot.errors=Math.round(tot.errors*f);tot.absences=Math.round(tot.absences*f);tot.resolved=Math.round(tot.resolved*f);tot.cases=Math.max(1,Math.round(tot.cases*f));
+  tot.autonomy=Math.round(tot.resolved/tot.cases*100);
+  tot.clean=tot.clean/items.length;tot.training=tot.training/items.length;tot.ontime=tot.ontime/items.length;tot.repurchase=tot.repurchase/items.length;
+  tot.ticket=tot.orders?tot.revenue/tot.orders:0;tot.accuracy=tot.orders?(1-tot.errors/tot.orders)*100:100;
+  return tot;
+ }
+ function setProgress(id,label,n){el(id).style.setProperty("--w",Math.max(0,Math.min(100,n))+"%");el(label).textContent=formatPercent(n)}
+ function drawGraph(total){
+  var distribution=[.74,.92,.84,1.12,1.04,1.2,1.16],sum=distribution.reduce(function(a,b){return a+b},0),max=Math.max.apply(null,distribution),labels=selectedPeriod===7?["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"]:selectedPeriod===30?["S1","S2","S3","S4","S5","S6","S7"]:["P1","P2","P3","P4","P5","P6","P7"];
+  el("graph").innerHTML="";
+  distribution.forEach(function(weight,i){
+   var count=Math.round(total.orders*weight/sum),col=document.createElement("div");col.className="barcol";
+   var n=document.createElement("b");n.textContent=integer.format(count);
+   var bar=document.createElement("span");bar.className="bar";bar.style.setProperty("--h",Math.round(weight/max*83)+"%");
+   var day=document.createElement("small");day.textContent=labels[i];
+   col.appendChild(n);col.appendChild(bar);col.appendChild(day);el("graph").appendChild(col);
+  });
+  el("period-label").textContent=selectedPeriod+" dias";
+  el("graph").setAttribute("aria-label","Distribuição fictícia de "+integer.format(total.orders)+" pedidos em "+selectedPeriod+" dias");
+ }
+ function drawBranches(){
+  var container=el("branches");container.innerHTML="";
+  choose().forEach(function(x){
+   var row=document.createElement("div");row.className="branch";
+   var left=document.createElement("div"),title=document.createElement("b"),sub=document.createElement("span"),right=document.createElement("div");
+   title.textContent=x.name;sub.textContent="Pedidos simulados • "+selectedPeriod+" dias";right.className="count";right.textContent=integer.format(Math.round(x.orders*scale()));
+   left.appendChild(title);left.appendChild(sub);row.appendChild(left);row.appendChild(right);container.appendChild(row);
+  });
+ }
+ function render(){
+  var d=calc();
+  el("stat-autonomia").textContent=formatPercent(d.autonomy);
+  el("stat-pedidos").textContent=integer.format(d.orders);
+  el("stat-receita").textContent="R$ "+compact.format(d.revenue);
+  el("stat-erros").textContent=integer.format(d.errors);
+  el("ring").style.setProperty("--p",d.autonomy);
+  el("ring-number").innerHTML=formatPercent(d.autonomy)+"<small>autonomia</small>";
+  el("ring-detail").textContent=integer.format(d.resolved)+" de "+integer.format(d.cases)+" ocorrências resolvidas";
+  el("absences").textContent=integer.format(d.absences);
+  el("ticket").textContent=BRL.format(d.ticket);
+  el("ontime").textContent=formatPercent(d.ontime);
+  el("repurchase").textContent=formatPercent(d.repurchase);
+  setProgress("clean-bar","clean-label",d.clean);
+  setProgress("training-bar","training-label",d.training);
+  setProgress("accuracy-bar","accuracy-label",d.accuracy);
+  drawBranches();drawGraph(d);
+ }
+ document.querySelectorAll("[data-unit]").forEach(function(b){b.addEventListener("click",function(){selectedUnit=b.dataset.unit;document.querySelectorAll("[data-unit]").forEach(function(other){var active=other===b;other.classList.toggle("active",active);other.setAttribute("aria-pressed",String(active))});render()})});
+ document.querySelectorAll("[data-period]").forEach(function(b){b.addEventListener("click",function(){selectedPeriod=Number(b.dataset.period);document.querySelectorAll("[data-period]").forEach(function(other){var active=other===b;other.classList.toggle("active",active);other.setAttribute("aria-pressed",String(active))});render()})});
+ var issues=[
+  {unit:"Atalaia",title:"Cobertura de escala no próximo turno",hint:"Organizar substituição e validar presença",priority:"Alta",level:"high"},
+  {unit:"Hermes Fontes",title:"Conferência de pedidos do delivery",hint:"Revisar checklist antes de liberar",priority:"Média",level:"med"},
+  {unit:"Duas unidades",title:"Treinamento de caixas",hint:"Acompanhar padronização e atendimento",priority:"Média",level:"med"},
+  {unit:"Atalaia",title:"Checklist de limpeza",hint:"Conferir execução e registro",priority:"Baixa",level:"low"}
+ ];
+ var done={};
+ try{done=JSON.parse(sessionStorage.getItem("neto-demo-actions")||"{}")||{}}catch(e){done={}}
+ var timer;
+ function toast(message){el("toast").textContent=message;el("toast").classList.add("show");clearTimeout(timer);timer=setTimeout(function(){el("toast").classList.remove("show")},2600)}
+ function renderIssues(){
+  el("incidents").innerHTML="";
+  issues.forEach(function(issue,index){
+   if(selectedUnit==="atalaia"&&issue.unit==="Hermes Fontes")return;
+   if(selectedUnit==="hermes"&&issue.unit==="Atalaia")return;
+   var row=document.createElement("div");row.className="incident";
+   var left=document.createElement("div"),title=document.createElement("b"),sub=document.createElement("small");
+   title.textContent=issue.title;sub.textContent=issue.unit+" • "+issue.hint;
+   left.appendChild(title);left.appendChild(sub);
+   var btn=document.createElement("button");btn.type="button";btn.className=done[index]?"done":"";btn.textContent=done[index]?"✓ Acompanhado":"Acompanhar";btn.setAttribute("aria-label","Alternar acompanhamento: "+issue.title);
+   btn.addEventListener("click",function(){done[index]=!done[index];sessionStorage.setItem("neto-demo-actions",JSON.stringify(done));renderIssues();toast(done[index]?"Acompanhamento marcado apenas na demonstração.":"Acompanhamento desmarcado.")});
+   row.appendChild(left);row.appendChild(btn);el("incidents").appendChild(row);
+  });
+ }
+ document.querySelectorAll("[data-unit]").forEach(function(b){b.addEventListener("click",renderIssues)});
+ el("reset").addEventListener("click",function(){done={};sessionStorage.removeItem("neto-demo-actions");renderIssues();toast("Ações demonstrativas reiniciadas.")});
+ document.querySelectorAll(".nav a,.bottomnav a").forEach(function(a){a.addEventListener("click",function(){document.querySelectorAll(".nav a,.bottomnav a").forEach(function(x){x.classList.toggle("active",x.getAttribute("href")===a.getAttribute("href"))})})});
+ render();renderIssues();
+})();
+</script>
+</body>
+</html>
