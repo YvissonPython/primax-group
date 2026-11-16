@@ -65,6 +65,46 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
 @media(max-width:900px){.website-comparison{grid-template-columns:1fr}.browser{aspect-ratio:1.6}.comparison-benefits{grid-template-columns:1fr}}
 @media(max-width:580px){.website-panel{padding:12px}.browser{min-height:225px;aspect-ratio:1.32}.browserbody{min-height:190px}.newhero b{font-size:16px}.newmeat{font-size:66px}.old-illustration b{font-size:15px}.comparison-actions .btn{width:100%;justify-content:center}}
 
+
+/* Revisão real do Tópico 05: original preservado e nova proposta com fotografia. */
+#antes-depois .website-comparison{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);align-items:stretch}
+#antes-depois .website-panel{display:flex;flex-direction:column}
+#antes-depois .browser{aspect-ratio:auto;min-height:610px;flex:1}
+#antes-depois .browser-old{background:#f2f5fb}
+#antes-depois .browser-old .original-shot{height:100%;min-height:575px;padding:0;background:#f4f6fa;display:flex;justify-content:center;align-items:flex-start}
+#antes-depois .original-shot img{width:100%;height:auto;max-height:100%;object-fit:contain;object-position:center top;display:block;image-rendering:auto}
+#antes-depois .browser-new{background:#fff}
+#antes-depois .preview-modern{height:100%;background:#f6f7fb;color:#132542;display:flex;flex-direction:column;font-family:"DM Sans",sans-serif}
+#antes-depois .preview-modern-nav{display:flex;align-items:center;gap:8px;background:#09234a;color:#fff;padding:12px 11px;font-size:9px}
+#antes-depois .preview-modern-nav b{white-space:nowrap;flex:1;font-weight:800}
+#antes-depois .preview-modern-nav span{font-size:7px;color:#c1d1ea}
+#antes-depois .preview-modern-nav strong{background:#d7212c;padding:7px;border-radius:5px;white-space:nowrap;font-size:7px}
+#antes-depois .preview-modern-hero{display:grid;grid-template-columns:1.1fr .9fr;min-height:200px;background:linear-gradient(125deg,#250d10,#5e181a);color:white}
+#antes-depois .preview-modern-hero-text{padding:20px 15px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+#antes-depois .preview-modern-hero-text small{color:#ffc7aa;font-size:8px;font-weight:800;letter-spacing:.08em}
+#antes-depois .preview-modern-hero-text h3{font:800 clamp(17px,2vw,28px)/1.16 Manrope;margin:8px 0}
+#antes-depois .preview-modern-hero-text p{font-size:10px;color:#ffe6e0;line-height:1.35}
+#antes-depois .preview-modern-hero-text span{padding:8px 10px;background:#d51e2b;border-radius:6px;font-size:8px;font-weight:800}
+#antes-depois .preview-modern-hero img{width:100%;height:100%;min-height:180px;object-fit:cover}
+#antes-depois .preview-order-steps{background:white;display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:12px 11px;border-bottom:1px solid #d9e0ec;color:#183a59}
+#antes-depois .preview-order-steps b{flex:1;font-size:9px;white-space:nowrap}
+#antes-depois .preview-order-steps span{padding:6px;border:1px solid #d7dfe8;border-radius:6px;font-size:8px;font-weight:700}
+#antes-depois .preview-modern-content{padding:14px}
+#antes-depois .preview-modern-content h4{font:800 15px Manrope;margin:5px 0 10px;color:#0b3158}
+#antes-depois .preview-cut-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:15px}
+#antes-depois .preview-cut-grid div{border-radius:9px;background:#8c0b12;overflow:hidden;color:white}
+#antes-depois .preview-cut-grid img{height:82px;width:100%;object-fit:cover;display:block}
+#antes-depois .preview-cut-grid b{display:block;font-size:9px;padding:9px 5px;text-align:center}
+#antes-depois .preview-units{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#antes-depois .preview-units div{border:1px solid #cfd9e6;background:#fff;border-radius:9px;padding:12px}
+#antes-depois .preview-units strong{font-size:11px;display:block}
+#antes-depois .preview-units small{display:block;margin-top:6px;color:#5e718d;font-size:9px;line-height:1.4}
+#antes-depois .preview-flow{display:grid;gap:7px;margin-top:12px;padding:12px;border-radius:8px;background:#0a2e5c;color:white}
+#antes-depois .preview-flow strong{font-size:10px}
+#antes-depois .preview-flow span{font-size:9px;line-height:1.4;color:#cbe5ff}
+@media(max-width:900px){#antes-depois .website-comparison{grid-template-columns:1fr}#antes-depois .browser{min-height:0}#antes-depois .browser-old .original-shot{min-height:0}#antes-depois .original-shot img{max-width:560px}}
+@media(max-width:580px){#antes-depois .browser{min-height:0}#antes-depois .preview-modern-nav span{display:none}#antes-depois .preview-modern-hero-text h3{font-size:17px}#antes-depois .preview-modern-hero-text{padding:13px}#antes-depois .preview-modern-hero img{min-height:165px}#antes-depois .preview-order-steps b{flex:1 0 100%}#antes-depois .preview-cut-grid img{height:66px}}
+
 @media(max-width:1180px){.navlinks{gap:14px}.hero-grid{grid-template-columns:1fr 1fr;gap:35px}.pain-grid{grid-template-columns:repeat(3,1fr)}.pillars{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:850px){.navlinks{display:none}.hero{min-height:auto;padding:145px 0 65px}.hero-grid{grid-template-columns:1fr}.scene{min-height:0;padding:25px 0 5px}.glass{transform:none}.scene-badge{right:4px}.dashboard-preview{grid-template-columns:1fr}.preview-frame{transform:none}.pain-grid{grid-template-columns:repeat(2,1fr)}.section{padding:75px 0}}
 @media(max-width:590px){.container{width:calc(100% - 30px)}nav.site{padding:11px 14px}.brand img{width:34px;height:34px}.brand-main{font-size:10px}.brand-sub{font-size:8px}.navcta{padding:10px 11px;font-size:9px}.hero{padding:115px 0 40px}h1{font-size:clamp(38px,10vw,54px)}.intro{font-size:15px}.hero-actions .btn{flex:1;min-width:100%;padding:14px}.scene{padding-bottom:0}.glass{padding:18px;border-radius:19px}.scene h3{font-size:25px}.unit{padding:13px}.unit b{font-size:16px}.scene-badge{right:4px;bottom:-17px}.section{padding:64px 0}.section-head{margin-bottom:26px}h2{font-size:clamp(30px,9vw,43px)}.pain-grid,.compare,.pillars,.flow{grid-template-columns:1fr}.pain{min-height:auto;padding:19px}.pain .id{font-size:24px}.pain h3{margin:10px 0 8px}.quote{padding:24px;font-size:17px}.compare-card{padding:23px}.pillar{min-height:265px}.dashboard-preview{gap:26px}.preview-frame{padding:12px}.fake-kpi{padding:12px}.fake-kpi b{font-size:19px}.closing{padding:76px 0 90px}.closing p{font-size:15px}}
@@ -149,43 +189,52 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
 </section>
 <section class="section alt" id="antes-depois">
  <div class="container">
-  <div class="section-head reveal">
-   <span class="num">05 / EVOLUÇÃO DIGITAL</span>
-   <h2>Do site informativo a uma <em>experiência preparada para vender.</em></h2>
-   <p>Uma nova proposta digital para que o cliente descubra os produtos, identifique sua unidade e avance para um atendimento mais organizado pelo Meatz.</p>
+  <div class="section-head reveal"><span class="num">05 / EVOLUÇÃO DIGITAL</span>
+   <h2>O site atual é uma vitrine. O novo pode se tornar <em>um canal de vendas.</em></h2>
+   <p>O antes mantém a captura original do site, apenas ajustada ao tamanho do comparativo. O depois apresenta uma experiência com fotos dos produtos, escolha da unidade e uma jornada comercial apoiada pelo Meatz.</p>
   </div>
-  <div class="website-comparison reveal" aria-label="Comparação entre o modelo atual e o conceito de novo site">
+  <div class="website-comparison reveal">
    <article class="website-panel website-before">
-    <div class="website-panel-heading"><span class="website-marker old">ANTES</span><div><h3>Experiência atual</h3><small>Representação esquemática, não reprodução da captura enviada</small></div></div>
+    <div class="website-panel-heading"><span class="website-marker old">ANTES</span><div><h3>Site atual</h3><small>Captura original enviada · enquadramento proporcional</small></div></div>
     <div class="browser browser-old">
-     <div class="browserbar"><span class="browserdots"><i></i><i></i><i></i></span><span class="browserurl">SITE ATUAL · REFERÊNCIA VISUAL</span></div>
-     <div class="browserbody oldbody">
-      <div class="oldnav"><strong>ESQUINA DA CARNE</strong><span>INÍCIO &nbsp; • &nbsp; CONTATO</span></div>
-      <div class="oldmain"><div class="old-illustration"><span>INFORMAÇÕES</span><b>ESQUINA DA CARNE</b><small>Vitrine digital</small></div><div class="old-copy"><span></span><span></span><span></span></div></div>
-      <div class="oldtiles"><span>CONHEÇA A LOJA</span><span>FALE CONOSCO</span></div>
-     </div>
+     <div class="browserbar"><span class="browserdots"><i></i><i></i><i></i></span><span class="browserurl">SITE ATUAL · CAPTURA ORIGINAL</span></div>
+     <div class="browserbody original-shot"><img src="data:image/webp;base64,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" width="230" height="343" loading="lazy" alt="Captura do site atual da Esquina da Carne, incluindo cabeçalho azul, seção Nossas lojas, Como pedir e Instagram; somente redimensionada"></div>
     </div>
-    <p class="website-panel-note">Referência de uma navegação mais institucional. Oportunidade de trazer produtos, unidades e fluxo de atendimento para o primeiro plano.</p>
+    <p class="website-panel-note">Site existente preservado, sem retoques na composição original. Oportunidade de ampliar a apresentação visual de produtos e de facilitar a jornada do cliente.</p>
    </article>
    <article class="website-panel website-after">
-    <div class="website-panel-heading"><span class="website-marker new">DEPOIS</span><div><h3>Nova experiência proposta</h3><small>Conceito visual e funcional a validar</small></div></div>
+    <div class="website-panel-heading"><span class="website-marker new">DEPOIS</span><div><h3>Novo site proposto</h3><small>Conceito visual · fotos de referência</small></div></div>
     <div class="browser browser-new">
-     <div class="browserbar"><span class="browserdots"><i></i><i></i><i></i></span><span class="browserurl">ESQUINA DA CARNE · CONCEITO</span></div>
-     <div class="browserbody newbody">
-      <div class="newnav"><span class="ec-monogram">EC</span><b>ESQUINA DA CARNE</b><span class="newnav-cta">PEDIR PELO MEATZ ↗</span></div>
-      <div class="newhero"><div><small>QUALIDADE E PRATICIDADE</small><b>O corte certo para cada ocasião.</b><p>Uma jornada de compra mais simples e organizada.</p><span>CONHECER CATEGORIAS ↗</span></div><span class="newmeat" aria-hidden="true">🥩</span></div>
-      <div class="newtiles"><span>🥩 CHURRASCO</span><span>🍖 DIA A DIA</span><span>🧺 COMBOS</span></div>
+     <div class="browserbar"><span class="browserdots"><i></i><i></i><i></i></span><span class="browserurl">ESQUINA DA CARNE · NOVA EXPERIÊNCIA</span></div>
+     <div class="browserbody preview-modern">
+       <div class="preview-modern-nav"><b>ESQUINA DA CARNE</b><span>PRODUTOS · UNIDADES · COMO PEDIR</span><strong>PEDIR ↗</strong></div>
+       <div class="preview-modern-hero">
+        <div class="preview-modern-hero-text"><small>AÇOUGUE EM ARACAJU</small><h3>Carne selecionada para o seu dia a dia e churrasco.</h3><p>Praticidade na escolha, no atendimento e na entrega.</p><span>ESCOLHER CORTES ↗</span></div>
+        <img loading="lazy" src="https://images.unsplash.com/photo-1690983330548-e34b52aa8cb2?auto=format&amp;fit=crop&amp;w=800&amp;q=76" alt="Foto ilustrativa de cortes de carne bovina, proposta para o novo site">
+       </div>
+       <div class="preview-order-steps"><b>Seu pedido em três passos:</b><span>01 · Unidade</span><span>02 · Cortes</span><span>03 · Atendimento Meatz</span></div>
+       <div class="preview-modern-content">
+        <h4>Escolha os seus cortes</h4>
+        <div class="preview-cut-grid">
+          <div><img loading="lazy" src="https://images.unsplash.com/photo-1690983330548-e34b52aa8cb2?auto=format&amp;fit=crop&amp;w=380&amp;q=72" alt="Corte bovino ilustrativo"><b>🥩 Bovinos</b></div>
+          <div><img loading="lazy" src="https://images.unsplash.com/photo-1584048603508-4b31894439a9?auto=format&amp;fit=crop&amp;w=380&amp;q=72" alt="Balcão de carnes ilustrativo"><b>🍖 Cortes do dia</b></div>
+          <div><img loading="lazy" src="https://images.unsplash.com/photo-1690983330548-e34b52aa8cb2?auto=format&amp;fit=crop&amp;w=380&amp;q=72" alt="Carne para preparo de churrasco, imagem ilustrativa"><b>🔥 Churrasco</b></div>
+        </div>
+        <h4>Nossas unidades</h4>
+        <div class="preview-units"><div><strong>📍 Atalaia</strong><small>Zona Sul · Atendimento da unidade</small></div><div><strong>📍 Hermes Fontes</strong><small>Unidade Hermes Fontes · Atendimento</small></div></div>
+        <div class="preview-flow"><strong>Experiência do cliente</strong><span>Encontrar corte → Escolher unidade → Confirmar pedido → Retirar ou receber</span></div>
+       </div>
      </div>
     </div>
-    <p class="website-panel-note">O cliente conhece o catálogo, escolhe a unidade e inicia a jornada Meatz, com etapas de conferência e acompanhamento.</p>
+    <p class="website-panel-note">Mais confiança na escolha, produtos com imagens, unidades identificadas e um caminho claro para o atendimento. Fotos ilustrativas até recebermos material oficial das lojas.</p>
    </article>
   </div>
   <div class="comparison-benefits reveal">
-   <div><strong>01</strong><span>Jornada por categoria, não apenas informação institucional</span></div>
-   <div><strong>02</strong><span>Atalaia e Hermes Fontes em uma experiência unificada</span></div>
-   <div><strong>03</strong><span>Meatz como porta de entrada para atendimento e conversão</span></div>
+   <div><strong>01</strong><span>Fotos de produtos que despertam interesse e ajudam na decisão</span></div>
+   <div><strong>02</strong><span>Atalaia e Hermes Fontes em destaque, com atendimento por unidade</span></div>
+   <div><strong>03</strong><span>Jornada de compra orientada pelo Meatz para reduzir atritos e erros</span></div>
   </div>
-  <div class="comparison-actions reveal"><a class="btn" href="/esquina-da-carne/site">EXPLORAR CONCEITO DO NOVO SITE ↗</a><p>Protótipo demonstrativo. Nenhuma alteração foi feita no site atual da Esquina da Carne.</p></div>
+  <div class="comparison-actions reveal"><a class="btn" href="/esquina-da-carne/site">EXPLORAR PROTÓTIPO DO NOVO SITE ↗</a><p>O site atual permanece inalterado. As imagens e funcionalidades do novo site são conceituais.</p></div>
  </div>
 </section>
 <section class="section alt" id="painel">
