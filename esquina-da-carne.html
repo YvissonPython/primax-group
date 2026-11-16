@@ -105,6 +105,20 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
 @media(max-width:900px){#antes-depois .website-comparison{grid-template-columns:1fr}#antes-depois .browser{min-height:0}#antes-depois .browser-old .original-shot{min-height:0}#antes-depois .original-shot img{max-width:560px}}
 @media(max-width:580px){#antes-depois .browser{min-height:0}#antes-depois .preview-modern-nav span{display:none}#antes-depois .preview-modern-hero-text h3{font-size:17px}#antes-depois .preview-modern-hero-text{padding:13px}#antes-depois .preview-modern-hero img{min-height:165px}#antes-depois .preview-order-steps b{flex:1 0 100%}#antes-depois .preview-cut-grid img{height:66px}}
 
+
+/* Identidade visual Esquina da Carne + Primax: capa, menu e comparação do site. */
+.identity-pair{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.identity-pair img{width:38px;height:38px;object-fit:contain;display:block}
+.identity-pair .identity-esquina{filter:drop-shadow(0 2px 9px #167dc55c)}
+.identity-pair i{width:1px;height:30px;background:#4f86a7}
+.hero-partnership{display:flex;align-items:center;gap:15px;padding:10px 16px 10px 11px;border:1px solid #386a8b;border-radius:19px;width:max-content;max-width:100%;background:linear-gradient(145deg,#0d3152de,#061a30dd);box-shadow:0 13px 40px #0005,inset 0 1px #80ceff28;margin-bottom:25px}
+.hero-partnership img{width:63px;height:63px;object-fit:contain}
+.hero-partnership .partnership-times{font:700 22px Manrope;color:#6abfe6}
+.hero-partnership .partnership-label{font:800 12px Manrope;color:#e6f7ff;letter-spacing:.1em;line-height:1.45}
+.hero-partnership .partnership-label small{font:600 8px "DM Sans";letter-spacing:.1em;color:#8ab7d2}
+#antes-depois .preview-esquina-logo{width:26px;height:26px;object-fit:contain;flex-shrink:0}
+@media(max-width:590px){.identity-pair{gap:4px}.identity-pair img{width:27px;height:27px}.identity-pair i{height:24px}.brand-main{font-size:9px}.hero-partnership{gap:9px;padding:8px 11px}.hero-partnership img{width:43px;height:43px}.hero-partnership .partnership-times{font-size:17px}.hero-partnership .partnership-label{font-size:9px}.hero-partnership .partnership-label small{font-size:6px}}
+
 @media(max-width:1180px){.navlinks{gap:14px}.hero-grid{grid-template-columns:1fr 1fr;gap:35px}.pain-grid{grid-template-columns:repeat(3,1fr)}.pillars{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:850px){.navlinks{display:none}.hero{min-height:auto;padding:145px 0 65px}.hero-grid{grid-template-columns:1fr}.scene{min-height:0;padding:25px 0 5px}.glass{transform:none}.scene-badge{right:4px}.dashboard-preview{grid-template-columns:1fr}.preview-frame{transform:none}.pain-grid{grid-template-columns:repeat(2,1fr)}.section{padding:75px 0}}
 @media(max-width:590px){.container{width:calc(100% - 30px)}nav.site{padding:11px 14px}.brand img{width:34px;height:34px}.brand-main{font-size:10px}.brand-sub{font-size:8px}.navcta{padding:10px 11px;font-size:9px}.hero{padding:115px 0 40px}h1{font-size:clamp(38px,10vw,54px)}.intro{font-size:15px}.hero-actions .btn{flex:1;min-width:100%;padding:14px}.scene{padding-bottom:0}.glass{padding:18px;border-radius:19px}.scene h3{font-size:25px}.unit{padding:13px}.unit b{font-size:16px}.scene-badge{right:4px;bottom:-17px}.section{padding:64px 0}.section-head{margin-bottom:26px}h2{font-size:clamp(30px,9vw,43px)}.pain-grid,.compare,.pillars,.flow{grid-template-columns:1fr}.pain{min-height:auto;padding:19px}.pain .id{font-size:24px}.pain h3{margin:10px 0 8px}.quote{padding:24px;font-size:17px}.compare-card{padding:23px}.pillar{min-height:265px}.dashboard-preview{gap:26px}.preview-frame{padding:12px}.fake-kpi{padding:12px}.fake-kpi b{font-size:19px}.closing{padding:76px 0 90px}.closing p{font-size:15px}}
@@ -115,7 +129,7 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
 <div class="progressbar" id="progress"></div>
 <nav class="site" aria-label="Navegação">
  <a class="brand" href="#inicio" aria-label="Início da apresentação">
-  <img src="/assets/primax-mark.png" alt="Símbolo Primax Group" width="40" height="40">
+  <span class="identity-pair"><img class="identity-esquina" src="/assets/esquina-da-carne/logo.webp" alt="Logo da Esquina da Carne" width="42" height="42"><i aria-hidden="true"></i><img class="identity-primax" src="/assets/primax-mark.png" alt="Símbolo da Primax Group" width="40" height="40"></span>
   <div><div class="brand-main">ESQUINA DA CARNE × PRIMAX</div><div class="brand-sub">PROJETO ESTRATÉGICO · 2026</div></div>
  </a>
  <div class="navlinks"><a href="#diagnostico">Diagnóstico</a><a href="#metodo">Método</a><a href="#antes-depois">Antes e depois</a><a href="#painel">Painel do Neto</a><a href="#plano">Plano 90 dias</a></div>
@@ -125,6 +139,7 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
 <section class="hero" id="inicio">
  <div class="container hero-grid">
   <div class="reveal visible">
+   <div class="hero-partnership" aria-label="Parceria estratégica Esquina da Carne e Primax Group"><img src="/assets/esquina-da-carne/logo.webp" alt="Esquina da Carne" width="72" height="72"><span class="partnership-times">×</span><img src="/assets/primax-mark.png" alt="Primax Group" width="72" height="72"><span class="partnership-label">PROJETO ESTRATÉGICO<br><small>GESTÃO • PERFORMANCE • CRESCIMENTO</small></span></div>
    <div class="kicker">Projeto Estratégico • Esquina da Carne</div>
    <h1>Você construiu duas unidades. <em>Agora é hora de ganhar liberdade para crescer.</em></h1>
    <p class="intro">Não se trata de trabalhar mais. Trata-se de construir uma operação em que pessoas, processos e resultados funcionem com direção — sem que tudo dependa do Neto.</p>
@@ -207,7 +222,7 @@ main{position:relative;z-index:1}.container{width:min(1320px,calc(100% - 40px));
     <div class="browser browser-new">
      <div class="browserbar"><span class="browserdots"><i></i><i></i><i></i></span><span class="browserurl">ESQUINA DA CARNE · NOVA EXPERIÊNCIA</span></div>
      <div class="browserbody preview-modern">
-       <div class="preview-modern-nav"><b>ESQUINA DA CARNE</b><span>PRODUTOS · UNIDADES · COMO PEDIR</span><strong>PEDIR ↗</strong></div>
+       <div class="preview-modern-nav"><img class="preview-esquina-logo" src="/assets/esquina-da-carne/logo.webp" width="26" height="26" alt="Logo Esquina da Carne"><b>ESQUINA DA CARNE</b><span>PRODUTOS · UNIDADES · COMO PEDIR</span><strong>PEDIR ↗</strong></div>
        <div class="preview-modern-hero">
         <div class="preview-modern-hero-text"><small>AÇOUGUE EM ARACAJU</small><h3>Carne selecionada para o seu dia a dia e churrasco.</h3><p>Praticidade na escolha, no atendimento e na entrega.</p><span>ESCOLHER CORTES ↗</span></div>
         <img loading="lazy" src="https://images.unsplash.com/photo-1690983330548-e34b52aa8cb2?auto=format&amp;fit=crop&amp;w=800&amp;q=76" alt="Foto ilustrativa de cortes de carne bovina, proposta para o novo site">
